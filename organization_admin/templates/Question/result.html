@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
+<title>正在考试</title>
+</head>
+
+<body>
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+input{
+	width:50px;
+	height:50px;
+	}
+input[type="submit"]{
+	width:200px; 
+	height:300px; 
+	font-size:36px;
+	}
+input[type="text"]{
+	width:80%;
+	}
+input[type="file"]{
+	width:100%;
+	}
+textarea{
+	width:100%;
+	}	
+</style>
+<form action="handin?module={{module}}&type={{question_type}}" method="post" enctype="multipart/form-data" name="add_form" target="_self">
+  <table width="100%" border="1">
+    <caption style="font-size: 100px;">查找结果</caption>
+    {%for vo in single_choice_questions%}  
+    <tr>
+      <th scope="row">第{{vo["id"]}}题<input hidden="" type="text" name="question_id" value="{{vo['id']}}"></th>
+      <th scope="row">{{vo["title"]}}<img width="500" src="{{static_url('sangao/templates/Exam/upload/')+vo['picture']}}"></th>
+      <td>&nbsp;</td>
+      <td>
+        <p>
+          <input type="radio" name="answer[{{vo['id']}}]" value="A">
+          {{vo["choice1"]}}</p>
+        <p>
+          <input type="radio" name="answer[{{vo['id']}}]" value="B">
+          {{vo["choice2"]}}</p>
+        <p>
+          <input type="radio" name="answer[{{vo['id']}}]" value="C">
+          {{vo["choice3"]}}</p>
+        <p>
+          <input type="radio" name="answer[{{vo['id']}}]" value="D">
+          {{vo["choice4"]}}</p>
+      </td>
+    </tr>
+    {%end%}   
+    {%for vo in true_false_questions%}
+    <tr>
+      <th scope="row">第{{vo["id"]}}题<input hidden="" type="text" name="question_id" value="{{vo['id']}}"></th>
+      <th scope="row">{{vo["title"]}}<img width="500" src="{{static_url('sangao/templates/Exam/upload/')+vo['picture']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td>
+      <p><input type="radio" name="answer[{{vo['id']}}]" value="right">对</p>
+      <p><input type="radio" name="answer[{{vo['id']}}]" value="wrong">错</p>
+      </td>
+    </tr>   
+    {%end%} 
+    {%for vo in operation_questions%}
+    <tr>
+      <th scope="row">第{{vo["id"]}}题<input hidden="" type="text" name="question_id" value="{{vo['id']}}"></th>
+      <th scope="row">{{vo["title"]}}<img width="500" src="{{static_url('sangao/templates/Question/upload/')+vo['picture']}}" alt=""></th>
+      <td><a href="{{static_url('sangao/templates/Question/upload/')+vo['material']}}">{{vo["material"]}}</a></td>
+      <td><input type="file" name="file"></td>
+    </tr>    
+    {%end%}                      
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <th scope="row">&nbsp;</th>
+      <td>&nbsp;</td>
+      <td><input type="submit" value="提交"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

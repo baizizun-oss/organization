@@ -1,0 +1,799 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
+<title>正在考试</title>
+</head>
+
+<body>
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+input{
+	width:50px;
+	height:50px;
+	}
+input[type="submit"]{
+	width:200px; 
+	height:300px; 
+	font-size:36px;
+	}
+input[type="text"]{
+	width:80%;
+	}
+input[type="file"]{
+	width:100%;
+	}
+textarea{
+	width:100%;
+	}	
+</style>
+<form action="index?exam_paper_id={{exam_paper['id']}}" method="post" enctype="multipart/form-data" name="add_form" target="_self">
+  <table width="100%" border="1">
+    <caption style="font-size: 100px;">{{exam_paper["title"]}}</caption>
+    <tr>
+      <th rowspan="2" scope="row">个人信息</th>
+      <th scope="row">姓名</th>
+      <td>&nbsp;</td>
+      <td><input type="text" name="name"></td>
+    </tr>
+    <tr>
+      <th scope="row">班级</th>
+      <td>&nbsp;</td>
+      <td><select name="grade">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        </select>
+        <span>年级</span>
+        <select name="class">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+          <option value="34">34</option>
+          <option value="35">35</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+        </select>
+        <span>班</span></td>
+    </tr>
+    
+    <tr>
+      <th scope="row">第1题</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['one']}}"></th>
+      <td>&nbsp;</td>
+      <td>
+        <p>
+          <input type="radio" name="one" value="A">
+          <span>A</span></p>
+        <p>
+          <input type="radio" name="one" value="B">
+          <span>B</span>          </p>
+        <p>
+          <input type="radio" name="one" value="C">
+          <span>C</span>          </p>
+        <p>
+          <input type="radio" name="one" value="D">
+          <span>D</span></p>
+      </td>
+    </tr>
+
+
+    <tr>
+      <th scope="row">第2题</th>
+      <th scope="row">
+      <p><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['two']}}" alt=""></p></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="two" value="A">
+        <span>A</span>
+        </p>
+        <p>
+          <input type="radio" name="two" value="B">
+          <span>B</span>        </p>
+        <p>
+          <input type="radio" name="two" value="C">
+          <span>C</span>        </p>
+        <p>
+          <input type="radio" name="two" value="D">
+      <span>D</span></p></td>
+    </tr>
+    {%if exam_paper["two"]==""%}
+    -->
+    {%end%}
+    {%if exam_paper["three"]==None%}
+    <!--
+    {%end%}         
+    <tr>
+      <th scope="row">3</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['three']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="three" value="A">
+        <span>A</span> </p>
+        <p>
+          <input type="radio" name="three" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="three" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="three" value="D">
+      <span>D</span></p></td>
+    </tr>
+    {%if exam_paper["one"]==None%}
+    -->
+    {%end%}    
+    <tr>
+      <th scope="row">4</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['four']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="four" value="A">
+        <span>A</span> </p>
+        <p>
+          <input type="radio" name="four" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="four" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="four" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['five']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="five" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="five" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="five" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="five" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['six']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="six" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="six" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="six" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="six" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">7</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['seven']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="seven" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="seven" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="seven" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="seven" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">8</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['eight']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="eight" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="eight" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="eight" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="eight" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">9</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['nine']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="nine" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="nine" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="nine" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="nine" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">10</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['ten']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="ten" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="ten" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="ten" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="ten" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">11</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['eleven']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="eleven" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="eleven" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="eleven" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="eleven" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">12</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['twelve']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="twelve" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="twelve" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="twelve" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="twelve" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">13</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['thirteen']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="thirteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="thirteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="thirteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="thirteen" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">14</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['fourteen']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fourteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fourteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fourteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fourteen" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">15</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['fifteen']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">16</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['sixteen']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">17</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['seventeen']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">18</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['eighteen']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">19</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['nineteen']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">20</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['twenty']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>
+    <tr>
+      <th scope="row">判断题1</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['true-false1']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td>
+      <p><input type="radio" name="twenty" value="right">对</p>
+      <p><input type="radio" name="twenty" value="wrong">错</p>
+      </td>
+    </tr>    
+    <tr>
+      <th scope="row">判断题2</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['true-false2']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td>
+      <p><input type="radio" name="twenty" value="right">对</p>
+      <p><input type="radio" name="twenty" value="wrong">错</p>
+      </td>
+    </tr>    
+    <tr>
+      <th scope="row">判断题3</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['true-false3']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td>
+      <p><input type="radio" name="twenty" value="right">对</p>
+      <p><input type="radio" name="twenty" value="wrong">错</p>
+      </td>
+    </tr>    
+    <tr>
+      <th scope="row">判断题4</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['true-false4']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td>
+      <p><input type="radio" name="twenty" value="right">对</p>
+      <p><input type="radio" name="twenty" value="wrong">错</p>
+      </td>
+    </tr>    
+    <tr>
+      <th scope="row">判断题5</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['true-false5']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td>
+      <p><input type="radio" name="twenty" value="right">对</p>
+      <p><input type="radio" name="twenty" value="wrong">错</p>
+      </td>
+    </tr>       
+    <tr>
+      <th scope="row">操作题1</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['twentyone']}}" alt=""></th>
+      <td><a href="{{static_url('sangao/templates/Exam/upload/')+exam_paper['twentyone_sucai']}}">{{exam_paper["twentyone_sucai"]}}</a></td>
+      <td><input type="file" name="twentyone"></td>
+    </tr>    
+    <tr>
+      <th scope="row">操作题2</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['twentytwo']}}" alt=""></th>
+      <td><a href="{{static_url('sangao/templates/Exam/upload/')+exam_paper['twentytwo_sucai']}}">{{exam_paper["twentytwo_sucai"]}}</a></td>
+      <td><input type="file" name="twentytwo"></td>
+    </tr>   
+    {%if exam_paper["zonghe1-1"]==""%}
+    <!--
+    {%end%}          
+    <tr>
+      <th scope="row">综合1-1</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['zonghe1-1']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>     
+    {%if exam_paper["zonghe1-1"]==""%}
+    -->
+    {%end%}  
+    {%if exam_paper["zonghe1-2"]==""%}
+    <!--
+    {%end%}           
+    <tr>
+      <th scope="row">综合1-2</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['zonghe1-2']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>      
+    {%if exam_paper["zonghe1-2"]==""%}
+    -->
+    {%end%}      
+    {%if exam_paper["zonghe1-3"]==""%}
+    <!--
+    {%end%}      
+    <tr>
+      <th scope="row">综合1-3</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['zonghe1-3']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>    
+    {%if exam_paper["zonghe1-3"]==""%}
+    -->
+    {%end%}      
+    {%if exam_paper["zonghe1-4"]==""%}
+    <!--
+    {%end%}        
+    <tr>
+      <th scope="row">综合1-4</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['zonghe1-4']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>  
+    {%if exam_paper["zonghe1-4"]==""%}
+    -->
+    {%end%}    
+    {%if exam_paper["zonghe1-5"]==""%}
+    <!--
+    {%end%}        
+    <tr>
+      <th scope="row">综合1-5</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['zonghe1-5']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>  
+    {%if exam_paper["zonghe1-5"]==""%}
+    -->
+    {%end%}
+    {%if exam_paper["zonghe1-6"]==""%}
+    <!--
+    {%end%}        
+    <tr>
+      <th scope="row">综合1-6</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['zonghe1-6']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>  
+    {%if exam_paper["zonghe1-6"]==""%}
+    -->
+    {%end%}              
+    {%if exam_paper["zonghe2-1"]==""%}
+    <!--
+    {%end%}          
+    <tr>
+      <th scope="row">综合2-1</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['zonghe2-1']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>       
+    {%if exam_paper["zonghe2-1"]==""%}
+    -->
+    {%end%}      
+    {%if exam_paper["zonghe2-2"]==""%}
+    <!--
+    {%end%}     
+    <tr>
+      <th scope="row">综合2-2</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['zonghe2-2']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>   
+    {%if exam_paper["zonghe2-2"]==""%}
+    -->
+    {%end%}       
+    {%if exam_paper["zonghe2-3"]==""%}
+    <!--
+    {%end%}        
+    <tr>
+      <th scope="row">综合2-3</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['zonghe2-3']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>       
+    {%if exam_paper["zonghe2-3"]==""%}
+    -->
+    {%end%}           
+    {%if exam_paper["zonghe2-4"]==""%}
+    <!--
+    {%end%}     
+    <tr>
+      <th scope="row">综合2-4</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['zonghe2-4']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr> 
+    {%if exam_paper["zonghe2-4"]==""%}
+    -->
+    {%end%}               
+    {%if exam_paper["zonghe2-5"]==""%}
+    <!--
+    {%end%}           
+    <tr>
+      <th scope="row">综合2-5</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['zonghe2-5']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>    
+    {%if exam_paper["zonghe2-5"]==""%}
+    -->
+    {%end%}                  
+    {%if exam_paper["zonghe2-6"]==""%}
+    <!--
+    {%end%}    
+    <tr>
+      <th scope="row">综合2-6</th>
+      <th scope="row"><img width="500" src="{{static_url('sangao/templates/Exam/upload/')+exam_paper['zonghe2-6']}}" alt=""></th>
+      <td>&nbsp;</td>
+      <td><p>
+        <input type="radio" name="fifteen" value="A">
+        <span>A</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="B">
+          <span>B</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="C">
+          <span>C</span></p>
+        <p>
+          <input type="radio" name="fifteen" value="D">
+      <span>D</span></p></td>
+    </tr>                
+    {%if exam_paper["zonghe2-6"]==""%}
+    -->
+    {%end%}                                                
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <th scope="row">&nbsp;</th>
+      <td>&nbsp;</td>
+      <td><input type="submit" value="提交"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

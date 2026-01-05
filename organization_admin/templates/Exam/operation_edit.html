@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
+<title>添加操作试题</title>
+</head>
+
+<body>
+<script>
+$(document).ready(function() {
+  $('#module').change(function() {
+    const module = $(this).val();
+    const $kpSelect = $('#knowledge');
+
+    if (module) {
+      // 清空并禁用，显示加载状态
+      $kpSelect.empty().prop('disabled', true).append('<option>加载中...</option>');
+
+      $.get('/sangao/Question/get_module_knowledge', { module: module })
+        .done(function(data) {
+          // data 应为 [{id: 1, name: "函数"}, {id: 2, name: "导数"}, ...]
+          $kpSelect.empty().prop('disabled', false);
+          $kpSelect.append('<option value="12">暂未纳入</option>');
+          data.forEach(item => {
+            $kpSelect.append(`<option value="${item.id}">${item.name}</option>`);
+          });
+        })
+        .fail(function() {
+          $kpSelect.empty().prop('disabled', true).append('<option>加载失败</option>');
+        });
+    } else {
+      $kpSelect.empty().prop('disabled', true).append('<option>请先选择模块</option>');
+    }
+  });
+});
+</script>    
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+input{
+	width:50px;
+	height:50px;
+	}
+input[type="submit"]{
+	width:200px; 
+	height:300px; 
+	font-size:36px;
+	}
+input[type="text"]{
+	width:80%;
+	}
+input[type="file"]{
+	width:100%;
+	}
+textarea{
+	width:100%;
+	}	
+</style>
+<form action="edit?question_id={{question['question_id']}}&question_type=operation" method="post" enctype="multipart/form-data" name="add_form" target="_self">
+  <table width="100%" border="1">
+    <tr>
+      <th scope="row">题目</th>
+      <td><input type="text" name="title" value="{{question['title']}}"></td>
+    </tr>
+    <tr>
+      <th scope="row">图片1</th>
+      <td><input type="file" name="photo1" class="photo">{% if question["picture"]!="" %}<img src="/static_operation_question_images/{{question['picture']}}">{% end %}</td>
+    </tr>
+    <tr>
+      <th scope="row">图片2</th>
+      <td><input type="file" name="photo2" class="photo"></td>
+    </tr>
+    <tr>
+      <th scope="row">图片3</th>
+      <td><input type="file" name="photo3" class="photo"></td>
+    </tr>
+    <tr>
+      <th scope="row">素材文件1</th>
+      <td><input type="file" name="material" class="file">{% if question["material"]!="" %}<a href="/static_operation_question_files/{{question['material']}}">{{question["material"]}}</a>{% end %}</td>
+    </tr>    
+    <tr>
+      <th scope="row">素材文件2</th>
+      <td><input type="file" name="material2" class="file"></td>
+    </tr>        
+    <tr>
+      <th>所属模块</th>
+      <td>
+        <select name="module" id="module">
+          <option value="{{question['module_id']}}">{{question["module_name"]}}</option>
+          {%for module in modules%}            
+          <option value="{{module['id']}}">{{module["name"]}}</option>
+          {%end%}      
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">知识点</th>
+      <td>
+        <select name="knowledge" id="knowledge">
+          <option value="{{question['knowledge_id']}}" selected>{{question["knowledge_name"]}}</option>
+          {%for vo in knowledges%}
+          <option value="{{vo['id']}}">{{vo["name"]}}</option>
+          {%end%}
+        </select>
+      </td>
+    </tr>        
+    <tr>
+      <th scope="row">试题难度</th>
+      <td>
+        <select name="difficult">
+          <option value="{{question['difficult']}}" selected>{{question["difficult"]}}</option>
+          <option value="简单">简单</option>
+          <option value="困难">困难</option>
+        </select>
+      </td>
+    </tr>  
+
+    <tr>
+      <th scope="row">标准答案文件</th>
+      <td><input type="file" name="correct_answer" class="file">{% if question["material"]!="" %}<a href="/static_operation_question_files/{{question['answer']}}">{{question["answer"]}}</a>{% end %}</td>
+    </tr>
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <td><input type="submit" value="提交"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

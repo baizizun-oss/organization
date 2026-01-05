@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<title>登陆页</title>
+</head>
+
+<body>
+<form action="__SELF__" method="post" enctype="multipart/form-data" name="login_form">
+<table border="1" align="center">
+  <tr>
+    <th scope="row">用户名</th>
+    <td><input type="text" name="username" /></td>
+  </tr>
+  <tr>
+    <th scope="row">密码</th>
+    <td><input type="password" name="password" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__CONTROLLER__/register"><input type="button" value="注册"/></a></th>
+    <td><a href="javascript:submit()"><button>登录</button></a></td>
+  </tr>
+</table>
+
+</form>
+</body>
+</html>

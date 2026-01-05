@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<title>编辑</title>
+</head>
+{% import time %}
+{% import re %}
+
+<body>
+<style>
+tr{
+	height:200px;
+	}
+th{
+	width:20%;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+input{
+	width:50px;
+	height:50px;
+	}
+input[type="submit"]{
+	width:240px; 
+	height:200px; 
+	font-size:36px;
+	}
+input[type="text"]{
+	width:100%;
+	}
+input[type="file"]{
+	width:80%;
+	}
+select{
+	width:80%;
+	font-size:48px;
+	}
+img{
+	width:100%;
+	}
+textarea{
+	width:100%;
+	}	
+</style>
+<form action="/organization_admin/User/edit?id={{user['id']}}" method="post" enctype="multipart/form-data" name="edit_form" target="_self">
+<table width="100%" border="1">
+  <tr>
+    <th scope="row">真实姓名</th>
+    <td>{{user["name"]}}</td>
+  </tr>
+  <tr>
+    <th scope="row">修改状态为</th>
+    <td><input type="radio" name="status" value="已被除名">除名<input type="radio" name="status" value="正常">正常</td>
+  </tr>
+  <tr>
+    <th scope="row">修改原因</th>
+    <td>
+		<input type="radio" name="reason" value="连续三次缺勤">连续三次缺勤
+		<input type="radio" name="reason" value="扫地恢复">扫地恢复
+		<input type="radio" name="reason" value="系统故障">系统故障
+	</td>
+  </tr>  
+  <tr>
+    <th scope="row">&nbsp;</th>
+    <td><input type="submit" value="提交"></td>
+  </tr>
+</table>
+
+</form>
+</body>
+</html>

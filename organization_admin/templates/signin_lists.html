@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>访问统计</title>
+</head>
+
+<body>
+<style>
+button{
+	width:100%;
+	height:50px;
+	font-size:10px;
+	}
+</style>
+<p>
+{% import time %}
+</p>
+<table width="200" border="1" align="center">
+<caption>
+签到统计
+</caption>
+  <tr>
+    <th scope="col">序号</th>
+    <th scope="col">真实姓名</th>
+    <th scope="col">应签日期</th>
+    <th scope="col">签到状态</th>
+    <th scope="col">操作</th>
+  </tr>
+  {%for vo in users%}
+  <tr>
+    <th scope="col">{{vo["user_id"]}}</th>
+    <th scope="col">{{vo["user_name"]}}</th>
+    <th scope="col">{{vo["expected_signin_time"]}}</th>
+    <th scope="col">{{vo["sign_status"]}}</th>
+    <th scope="col">{% if vo["user_status"] != '已被除名'%} <a href="remove_member?user_id={{vo['user_id']}}"><button>除名</button></a> {% else %} <span>已被除名</span>{% end %}</th>
+  </tr>
+  {%end%}
+</table>
+
+</body>
+</html>

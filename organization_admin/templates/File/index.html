@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
+<title>文件列表</title>
+</head>
+
+<body>
+<style>
+button{
+	width:100px;
+	height:100px;
+	}
+tr{
+	height:50px;
+	}
+	
+</style>
+<p><a href="__MODULE__/Feedback/lists"><button>反馈模块</button></a></p>
+<a href="__CONTROLLER__/add/uid/{$user[id]}"><button>增加</button></a>
+<a href="__CONTROLLER__/select"><button>查找</button></a>
+<table width="90%" border="1">
+  <tr>
+    <th scope="col">下载量</th>
+    <th scope="col">助记名</th>
+    <th scope="col">操作</th>
+  </tr>
+  <foreach name="file" item="vo">
+  <tr>
+    <td>{$vo["download_number"]}</td>
+    <td><a href="__CONTROLLER__/detail/id/{$vo['id']}">{$vo["easy_memorize_name"]}</a></td>
+    <td><a href="__CONTROLLER__/del/id/{$vo['id']}/uid/{$vo['uid']}">删除</a></td>
+  </tr>
+  </foreach>
+</table>
+
+</body>
+</html>

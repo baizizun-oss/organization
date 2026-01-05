@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
+<title>试卷添加</title>
+</head>
+
+<body>
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+input{
+	width:50px;
+	height:50px;
+	}
+input[type="submit"]{
+	width:200px; 
+	height:300px; 
+	font-size:36px;
+	}
+input[type="text"]{
+	width:80%;
+	}
+input[type="file"]{
+	width:100%;
+	}
+textarea{
+	width:100%;
+	}	
+</style>
+<form action="exam_paper_add" method="post" enctype="multipart/form-data" name="add_form" target="_self">
+  <table width="100%" border="1">
+    <tr>
+      <th scope="row">试卷名称（标题）</th>
+      <th scope="row"><input type="text" name="title"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第1题</th>
+      <th scope="row"><input type="file" name="one"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第2题</th>
+      <th scope="row"><input type="file" name="two"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第3题</th>
+      <th scope="row"><input type="file" name="three"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第4题</th>
+      <th scope="row"><input type="file" name="four"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第5题</th>
+      <th scope="row"><input type="file" name="five"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第6题</th>
+      <th scope="row"><input type="file" name="six"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第7题</th>
+      <th scope="row"><input type="file" name="seven"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第8题</th>
+      <th scope="row"><input type="file" name="eight"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第9题</th>
+      <th scope="row"><input type="file" name="nine"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第10题</th>
+      <th scope="row"><input type="file" name="ten"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第11题</th>
+      <th scope="row"><input type="file" name="eleven"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第12题</th>
+      <th scope="row"><input type="file" name="twelve"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第13题</th>
+      <th scope="row"><input type="file" name="thirteen"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第14题</th>
+      <th scope="row"><input type="file" name="fourteen"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第15题</th>
+      <th scope="row"><input type="file" name="fifteen"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第16题</th>
+      <th scope="row"><input type="file" name="sixteen"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第17题</th>
+      <th scope="row"><input type="file" name="seventeen"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第18题</th>
+      <th scope="row"><input type="file" name="eighteen"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第19题</th>
+      <th scope="row"><input type="file" name="nineteen"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">第20题</th>
+      <th scope="row"><input type="file" name="twenty"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">判断题1</th>
+      <th scope="row"><input type="file" name="true-false1"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">判断题2</th>
+      <th scope="row"><input type="file" name="true-false2"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">判断题3</th>
+      <th scope="row"><input type="file" name="true-false3"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">判断题4</th>
+      <th scope="row"><input type="file" name="true-false4"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>
+    <tr>
+      <th scope="row">判断题5</th>
+      <th scope="row"><input type="file" name="true-false5"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>          
+    <tr>
+      <th scope="row">操作题1</th>
+      <th scope="row"><input type="file" name="twentyone"></th>
+      <th scope="row"><input type="file" name="twentyone_sucai"></th>
+    </tr>
+    <tr>
+      <th scope="row">操作题2</th>
+      <th scope="row"><input type="file" name="twentytwo"></th>
+      <th scope="row"><input type="file" name="twentytwo_sucai"></th>
+    </tr>
+    <tr>
+      <th scope="row">综合1-1</th>
+      <th scope="row"><input type="file" name="zonghe1-1"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>            
+    <tr>
+      <th scope="row">综合1-2</th>
+      <th scope="row"><input type="file" name="zonghe1-2"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>        
+    <tr>
+      <th scope="row">综合1-3</th>
+      <th scope="row"><input type="file" name="zonghe1-3"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>        
+    <tr>
+      <th scope="row">综合1-4</th>
+      <th scope="row"><input type="file" name="zonghe1-4"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>               
+    <tr>
+      <th scope="row">综合1-5</th>
+      <th scope="row"><input type="file" name="zonghe1-5"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>           
+    <tr>
+      <th scope="row">综合1-6</th>
+      <th scope="row"><input type="file" name="zonghe1-6"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>                   
+    <tr>
+      <th scope="row">综合2-1</th>
+      <th scope="row"><input type="file" name="zonghe2-1"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>               
+    <tr>
+      <th scope="row">综合2-2</th>
+      <th scope="row"><input type="file" name="zonghe2-2"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>                  
+    <tr>
+      <th scope="row">综合2-3</th>
+      <th scope="row"><input type="file" name="zonghe2-3"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>                         
+    <tr>
+      <th scope="row">综合2-4</th>
+      <th scope="row"><input type="file" name="zonghe2-4"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>                       
+    <tr>
+      <th scope="row">综合2-5</th>
+      <th scope="row"><input type="file" name="zonghe2-5"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>              
+    <tr>
+      <th scope="row">综合2-6</th>
+      <th scope="row"><input type="file" name="zonghe2-6"></th>
+      <th scope="row">&nbsp;</th>
+    </tr>                                        
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <td><input type="submit" value="提交"></td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<title>编辑</title>
+</head>
+{% import time %}
+{% import re %}
+
+<body>
+<style>
+tr{
+	height:200px;
+	}
+th{
+	width:20%;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+input{
+	width:50px;
+	height:50px;
+	}
+input[type="submit"]{
+	width:240px; 
+	height:200px; 
+	font-size:36px;
+	}
+input[type="text"]{
+	width:100%;
+	}
+input[type="file"]{
+	width:80%;
+	}
+select{
+	width:80%;
+	font-size:48px;
+	}
+img{
+	width:100%;
+	}
+textarea{
+	width:100%;
+	}	
+</style>
+<form action="/sangao/Design/edit?id={{design[0]}}" method="post" enctype="multipart/form-data" name="edit_form" target="_self">
+<table width="100%" border="1">
+  <tr>
+    <th scope="row">标题({{design[0]}})</th>
+    <td><input type="text" name="title" value="{{design[1]}}"></td>
+  </tr>
+  <tr>
+    <th scope="row">内容</th>
+    <td><textarea name="content" rows="20">{{design[3]}}</textarea></td>
+  </tr>
+  <tr>
+    <th scope="row">图片1</th>
+    <td><img src="__ROOT__/{$photo1}">
+      <input type="file" name="photo1" class="photo"></td>
+  </tr>
+  <tr>
+    <th scope="row">图片2</th>
+    <td><img src="__ROOT__/{$photo2}">
+      <input type="file" name="photo2" class="photo"></td>
+  </tr>
+  <tr>
+    <th scope="row">图片3</th>
+    <td><img src="__ROOT__/{photo3}">
+      <input type="file" name="photo3" class="photo"></td>
+  </tr>
+  <tr>
+    <th scope="row"></th>
+    <td><input type="submit" name="submit" value="提交" /></td>
+  </tr>
+</table>
+
+</form>
+</body>
+</html>

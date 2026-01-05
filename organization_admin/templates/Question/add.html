@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
+<title>添加试题</title>
+</head>
+
+<body>
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+input{
+	width:50px;
+	height:50px;
+	}
+input[type="submit"]{
+	width:200px; 
+	height:300px; 
+	font-size:36px;
+	}
+input[type="text"]{
+	width:80%;
+	}
+input[type="file"]{
+	width:100%;
+	}
+textarea{
+	width:100%;
+	}	
+</style>
+<form action="add" method="post" enctype="multipart/form-data" name="add_form" target="_self">
+  <table width="100%" border="1">
+    <tr>
+      <th scope="row">题目</th>
+      <td><input type="text" name="title"></td>
+    </tr>
+    <tr>
+      <th scope="row">提示</th>
+      <td><input type="text" name="notice"></td>
+    </tr>        
+    <tr>
+      <th>类型</th>
+      <td>
+        <select name="type">
+          <option value="arduino_esp32">arduino/esp32</option>
+          <option value="C++">C++</option>
+          <option value="raspi">树莓派</option>
+          <option value="python">python</option>
+          <option value="ev3">EV3</option>
+          <option value="scratch">scratch</option> 
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">难度等级</th>
+      <td>
+        <select name="difficult">
+          <option value="1">一级</option>
+          <option value="2">二级</option>
+          <option value="3">三级</option> 
+          <option value="4">四级</option> 
+        </select>
+      </td>
+    </tr>        
+    <tr>
+      <th scope="row">输入格式</th>
+      <td><input type="text" name="input_format"></td>
+    </tr>    
+    <tr>
+      <th scope="row">测试用例输入</th>
+      <td><input type="file" name="test_data_input" class="file"></td>
+    </tr>
+    <tr>
+      <th scope="row">输出格式</th>
+      <td><input type="text" name="output_format"></td>
+    </tr>    
+    <tr>
+      <th scope="row">测试用例输出</th>
+      <td><input type="file" name="test_data_output" class="file"></td>
+    </tr>
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <td><input type="submit" value="提交"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

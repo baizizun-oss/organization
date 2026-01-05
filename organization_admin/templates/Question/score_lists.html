@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
+<title>试卷库</title>
+</head>
+
+<body>
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+input{
+	width:50px;
+	height:50px;
+	}
+input[type="submit"]{
+	width:200px; 
+	height:300px; 
+	font-size:36px;
+	}
+input[type="text"]{
+	width:80%;
+	}
+input[type="file"]{
+	width:100%;
+	}
+textarea{
+	width:100%;
+	}	
+</style>
+
+
+<table width="100%" border="1">
+<caption style=" font-size:50px;">
+成绩表
+</caption>
+    <tr>
+      <th scope="row">姓名</th>
+      <th scope="row">试卷名称</th>
+      <th scope="row">分值</th>
+      <td>成绩(百分制得分)</td>
+      <td>考试时间</td>
+    </tr>
+
+	<foreach name="student_answer" item="vo">
+    <tr>
+      <th scope="row">{$vo["student_name"]}</th>
+      <th scope="row">{$vo["exam_paper_id"]}</th>
+      <th scope="row">60</th>
+      <td>{$vo["score"]}({$vo["hundred_score"]})</td>
+      <td>{$vo["ctime"]}</td>
+      </tr>
+    </foreach>
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <th scope="row">&nbsp;</th>
+      <th scope="row">&nbsp;</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <th scope="row">&nbsp;</th>
+      <th scope="row">&nbsp;</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <th scope="row">&nbsp;</th>
+      <th scope="row">&nbsp;</th>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</body>
+</html>

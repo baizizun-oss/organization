@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
+<title>错误率</title>
+</head>
+
+<body>
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+input{
+	width:50px;
+	height:50px;
+	}
+input[type="submit"]{
+	width:200px; 
+	height:300px; 
+	font-size:36px;
+	}
+input[type="text"]{
+	width:80%;
+	}
+input[type="file"]{
+	width:100%;
+	}
+textarea{
+	width:100%;
+	}	
+</style>
+
+
+<table width="100%" border="1">
+<caption style=" font-size:50px;">
+错题排行
+</caption>
+    <tr>
+      <td>考试时间</td>
+      <th scope="row">试卷名称</th>
+      <th scope="row">题目</th>
+      <td>错误人数</td>
+    </tr>
+  	{%for vo in exam_papers%}
+	<foreach name="exam_paper" item="vo">
+    <tr>
+      <th scope="row">{{vo[24]}}<a href="index?id={{vo[0]}}">(点击开始考试)</a></th>
+      <th scope="row">60</th>
+      <td>教材习题</td>
+    </tr>
+    </foreach>
+  	{%end%}
+	<foreach name="error_number" key="key" item="vo">
+    <tr>
+      <td>{$vo[1]}</td>
+      <th scope="row">{$vo[0]}</th>
+      <th scope="row">{$key}</th>
+      <td>{$vo}</td>
+      </tr>
+    </foreach>
+    <tr>
+      <td>&nbsp;</td>
+      <th scope="row">&nbsp;</th>
+      <th scope="row">&nbsp;</th>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <th scope="row">&nbsp;</th>
+      <th scope="row">&nbsp;</th>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <th scope="row">&nbsp;</th>
+      <th scope="row">&nbsp;</th>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</body>
+</html>

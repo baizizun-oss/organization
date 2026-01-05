@@ -1,0 +1,724 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0," name="viewport" />
+{% import time %}
+{% import re %}
+<title>添加决议</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // 获取当前时间并赋值给当前时间标签
+        function uploadTime(){
+            // 获取当前时间戳
+            var now_time = new Date().getTime();
+            // 装入submit
+            document.getElementById("now_time").setAttribute("value", now_time);
+        }
+
+        $(document).ready(function() {
+            // 初始化日期选项
+            updateDays();
+
+            // 绑定选择事件
+            $('#yearSelect, #monthSelect').change(function() {
+                updateDays();
+            });
+            
+            console.log('Document ready and jQuery loaded: ' + $.fn.jquery);
+            //默认隐藏day元素
+            $('#day').hide();
+
+            //绑定时间模式选择事件
+            $('input[name="start_display_time_mode"]').change(function() {
+              if($(this).val() === 'relative'){
+                    $('[name="start_display_time_year"]').hide();
+                    $('[name="start_display_time_month"]').hide();
+                    $('[name="start_display_time_first_half"]').hide();
+                    $('[name="start_display_time_second_half"]').hide();
+                    $('[name="day"]').show();
+                } else {
+                    $('[name="start_display_time_year"]').show();
+                    $('[name="start_display_time_month"]').show();
+                    $('[name="start_display_time_first_half"]').show();
+                    $('[name="start_display_time_second_half"]').show();
+                    $('#day').hide();
+              }
+            });
+        });
+
+        function updateDays() {
+            // 获取当前选择值
+            var year = parseInt($('#yearSelect').val());
+            var month = parseInt($('#monthSelect').val());
+
+            // 计算当月天数
+            var days = calculateDays(year, month);
+
+            // 清空现有选项
+            $('#daySelect').empty();
+            $('#daySelect').append(
+                $('<option></option>').val({{time.strftime('%d')}}).text({{time.strftime('%d')}})
+            );
+            // 生成新选项
+            for (var day = 16; day <= days; day++) { // 修改循环起点为1
+                $('#daySelect').append(
+                    $('<option></option>').val(day).text(day)
+                );
+            }
+        }
+
+        function calculateDays(year, month) {
+            // 使用 JavaScript 日期对象计算
+            var tempDate = new Date(year, month, 0);
+            return tempDate.getDate();
+        }
+    </script>
+</head>
+
+
+<body>
+
+<style>
+tr{
+	height:200px;
+	}
+th{
+	width:20%;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+input{
+	width:50px;
+	height:50px;
+	}
+input[type="submit"]{
+	width:240px; 
+	height:200px; 
+	font-size:36px;
+	}
+input[type="text"]{
+	width:100%;
+	}
+input[type="file"]{
+	width:80%;
+	}
+select{
+	width:80%;
+	font-size:48px;
+	}
+img{
+	width:100%;
+	}
+textarea{
+	width:100%;
+	}	
+</style>
+<form action="/task/Home/Index/doubleEdit?id={{task['id']}}" method="post" enctype="multipart/form-data" name="edit_form" target="_self">
+<table width="100%" border="1">
+  <tr>
+    <th scope="row">标题({{task["id"]}})</th>
+    <td><input type="text" name="title" value="{{title}}"></td>
+  </tr>
+  <tr>
+    <th scope="row">内容</th>
+    <td><textarea name="content" rows="20" id="content">{{content}}</textarea></td>
+  </tr>
+  <tr>
+    <th scope="row">状态</th>
+    <td><table>
+      <tr>
+        <td><input type="radio" name="status" value="未完成" {% if status=="未完成" %}checked{% end %}><span>未完成</span></td>
+        </tr>
+      <tr>
+        <td><input type="radio" name="status" value="未处理" {% if status == "未处理" %}checked{% end %}><span>未处理</span></td>
+        </tr>        
+      <tr>
+        <td><input type="radio" name="status" value="存疑" {% if status == "存疑" %}checked{% end %}><span>存疑</span></td>
+        </tr>
+      <tr>
+        <td>
+          <select name="challenge">
+            <option value="{{challenge}}" selected>{{challenge}}</option>
+            {%for vo in challenges%}
+            <option value="{{vo[1]}}">{{vo[1]}}({{vo[3]}})</option>
+            {%end%}
+            </select>
+          </td>
+        </tr>
+      <tr>
+        <td><input type="radio" name="status" value="遇阻" {% if status == "遇阻" %}checked{% end %}><span>遇阻</span></td>
+        </tr>      
+        <tr>
+        <td>
+          <select name="impede">
+            <option value="{{impede}}" selected>{{impede}}</option>
+            
+            {%for vi in impedes%}
+              <option value="{{vi[1]}}">{{vi[1]}}({{vi[2]}})</option>
+              {%end%}
+            </select>
+          </td>
+        </tr>
+      <tr>
+        <td><input type="radio" name="status" value="存在前置问题" 
+          <eq name="status" value="存在前置问题">checked</eq>
+          ><span>存在前置问题</span></td>
+        </tr>
+      <tr>
+        <td><select name="front_problem">
+          <foreach name="front_problem" item="vo">
+            <option value="{$vo['id']}"><span>{$vo["id"]}</span>{$vo["title"]}</option>
+            </foreach>
+          </select></td>
+        </tr>
+      <tr>
+        <td><input type="radio" name="status" value="存在前置任务" 
+          <eq name="status" value="存在前置任务">checked</eq>
+          ><span>存在前置任务</span></td>
+        </tr>
+      
+      <tr>
+        <td>
+          <select name="front_task_id">
+            <foreach name="front_task" item="vo">
+              <option value="{$vo['id']}"><span>{$vo["id"]}</span>{$vo["title"]}</option>
+              </foreach>	
+            </select>
+          </td>
+        </tr>
+      <tr>
+        <td><input type="radio" name="status" value="验证中" 
+          <eq name="status" value="验证中">checked</eq>
+          ><span>验证中</span></td>
+        </tr>
+      <tr>
+        <td>
+          <select name="validating" id="validating" class="status">
+            <option value="{$selected_validating['validating']}">{$selected_validating["validating"]}</option>
+            <option value="">没有细分</option>
+            <foreach name="validating" item="vo">
+              <option value="{$vo['name']}"><span>{$vo["id"]}</span>{$vo["name"]}</option>
+              </foreach>
+            </select>
+          </td>
+        </tr>
+      <tr>
+        <td><input type="radio" name="status" value="已完成" 
+          {%if status=="已完成"%} checked{%end%}
+          ><span>已完成</span></td>
+        </tr>
+      <tr>
+        <td><input type="radio" name="status" value="失败" 
+          <eq name="status" value="失败">checked</eq>
+          ><span>失败</span></td>
+        </tr>
+      <tr>
+        <td><input type="radio" name="status" value="已否定" 
+          <eq name="status" value="已否定">checked</eq>
+          ><span>已否定</span></td>
+        </tr>        
+      </table></td>
+  </tr>
+
+  <tr>
+    <th scope="row">类型</th>
+    <td>
+      <input type="checkbox" name="type[]" value="IT" {% if 'IT' in type.split(',') %} checked {% end %}><span>IT</span>
+      <input type="checkbox" name="type[]" value="生活" <?php if(in_array("生活",$type)) echo "checked"; ?>><span>生活</span>
+      <input type="checkbox" name="type[]" value="任务" <?php if(in_array("任务",$type)) echo "checked"; ?>><span>任务</span>
+      <input type="checkbox" name="type[]" value="心得" <?php if(in_array("心得",$type)) echo "checked"; ?>><span>心得</span>
+      </td>
+  </tr>
+  <tr>
+    <th scope="row">提醒时间</th>
+    <td><select name="start_time_year">
+      <option value="{{time.strftime('%Y')}}">{{time.strftime("%Y") }}</option>
+      <option value="{{int(time.strftime('%Y'))+1}}">{{int(time.strftime("%Y"))+1 }}</option>
+    </select>
+      <span>年</span>
+      <select name="start_time_month">
+        <option value="{{time.strftime('%m')}}" selected>{{time.strftime("%m") }}</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select>
+      <span>月</span>
+      <select name="start_time_day">
+        <option value="{{time.strftime('%d')}}" selected>{{time.strftime('%d')}}</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+      </select>
+      <span>日</span>
+      <select name="start_time_hour">
+        <option value="{{time.strftime('%H')}}" selected>{{time.strftime('%H')}}</option>
+        <option value="00">00</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+      </select>
+      <span>时</span>
+        <select name="start_time_minute">
+        <option value="{{time.strftime('%M')}}" selected>{{time.strftime('%M')}}</option>
+        <option value="00">00</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+        </select>
+      <span>分</span>
+      </td>
+  </tr>
+  <tr>
+    <th scope="row">循环周期</th>
+    <td><select name="peroid_year">
+        {% if task["reminder_peroid_years"]!=None %}
+        <option value="{{task['reminder_peroid_years']}}" selected>{{task['reminder_peroid_years']}}</option>
+        {% end %}
+        <option value="0">0</option>
+        <option value="1">1</option>
+    </select>
+      <span>年</span>
+      <select name="peroid_month">
+        {% if task["reminder_peroid_months"]!=None %}
+        <option value="{{task['reminder_peroid_months']}}" selected>{{task['reminder_peroid_months']}}</option>        
+        {%end%}
+        <option value="0">0</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select>
+      <span>月</span>
+      <select name="peroid_day">
+        {% if task["reminder_peroid_days"]!=None %}
+        <option value="{{task['reminder_peroid_days']}}" selected>{{task['reminder_peroid_days']}}</option>          
+        {%end%}
+        <option value="0">0</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+      </select>
+      <span>日</span>
+      <select name="peroid_hour">
+         {% if task["reminder_peroid_hours"]!=None %}
+        <option value="{{task['reminder_peroid_hours']}}" selected>{{task['reminder_peroid_hours']}}</option>         
+        {%end%}
+        <option value="00">00</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+      </select>
+      <span>时</span>
+      <select name="peroid_minute">
+        {% if task["reminder_peroid_minutes"]!=None %}          
+        <option value="{{task['reminder_peroid_minutes']}}" selected>{{task['reminder_peroid_minutes']}}</option>     
+        {%end%}
+        <option value="00">00</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45">45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+        <option value="51">51</option>
+        <option value="52">52</option>
+        <option value="53">53</option>
+        <option value="54">54</option>
+        <option value="55">55</option>
+        <option value="56">56</option>
+        <option value="57">57</option>
+        <option value="58">58</option>
+        <option value="59">59</option>
+      </select>
+      <span>分</span></td>
+  </tr>
+
+  
+  <tr>
+      <td>所需地点经度</td>
+      <td><input type="text" name="longitude" value={{task['longitude']}}></td>
+  </tr>
+  <tr>
+      <td>所需地点纬度</td>
+      <td><input type="text" name="latitude" value={{task['latitude']}}></td>
+  </tr>  
+  <tr>
+    <th>时间模式</th>
+    <td>
+      <input type="radio" name="start_display_time_mode" value="absolute" checked><span>绝对</span></input>
+      <input type="radio" name="start_display_time_mode" value="relative"><span>相对</span></input>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">开始显示时间</th>
+    <td>
+      <select name="start_display_time_year" id="yearSelect">
+        <option value="{{time.strftime('%Y')}}">{{time.strftime("%Y") }}</option>
+        <option value="{{int(time.strftime('%Y'))+1}}">{{int(time.strftime("%Y"))+1 }}</option>
+      </select>
+      <span>年</span>
+      <select name="start_display_time_month" id="monthSelect">
+        <option value="{{time.strftime('%m')}}" selected>{{time.strftime("%m") }}</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select>
+      <span>月</span>
+      <select name="start_display_time_first_half">
+        <option value="{{time.strftime('%d')}}" selected>{{time.strftime('%d')}}</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+      </select>
+      <span>上半月</span>
+      <select name="start_display_time_second_half" id="daySelect">
+        <option value="{{time.strftime('%d')}}" selected>{{time.strftime('%d')}}</option>
+      </select>
+      <span>下半月</span>
+      <select name="day">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+          <option value="32">32</option>
+          <option value="33">33</option>
+          <option value="34">34</option>
+          <option value="35">35</option>
+          <option value="36">36</option>
+          <option value="37">37</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+          <option value="42">42</option>
+          <option value="43">43</option>
+          <option value="44">44</option>
+          <option value="45">45</option>
+          <option value="46">46</option>
+          <option value="47">47</option>
+          <option value="48">48</option>
+          <option value="49">49</option>
+          <option value="50">50</option>
+          <option value="51">51</option>
+          <option value="52">52</option>
+          <option value="53">53</option>
+          <option value="54">54</option>
+          <option value="55">55</option>
+          <option value="56">56</option>
+          <option value="57">57</option>
+          <option value="58">58</option>
+          <option value="59">59</option>
+          <option value="60">60</option>
+      </select>
+      <span>天后</span>
+      <select name="start_display_time_morning">
+        <option value="{{time.strftime('%H')}}" selected>{{time.strftime('%H')}}</option>
+        <option value="00">00</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+      </select>
+      <span>上午</span>
+      <select name="start_display_time_afternoon">
+        <option value="{{time.strftime('%H')}}" selected>{{time.strftime('%H')}}</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+      </select>
+      <span>下午</span></td>
+  </tr>
+  <tr hidden>
+    <td>当前时间戳</td>
+    <td><input type="text" name="now_time" id="now_time" value="nihao"></td>
+  </tr>
+
+  <tr>
+    <th scope="row"></th>
+    <td><input type="submit" name="submit" value="提交" onClick="uploadTime()"/></td>
+  </tr>
+</table>
+</form>
+
+</body>
+</html>

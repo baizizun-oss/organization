@@ -1,0 +1,12 @@
+FROM gcc:latest
+
+
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libseccomp2 && \
+    useradd -m runner && \
+    mkdir /code && \
+    chown runner:runner /code
+ 
+WORKDIR /code
+USER runner

@@ -1,0 +1,39 @@
+FROM ubuntu:20.04
+
+# 设置时区和语言环境
+ENV TZ=Asia/Shanghai
+ENV LANG=zh_CN.UTF-8
+ENV LC_ALL=zh_CN.UTF-8
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# 替换 Apt 源
+RUN sed -i 's|http://archive.ubuntu.com|http://mirrors.aliyun.com|g' /etc/apt/sources.list \
+    && sed -i 's|http://security.ubuntu.com|http://mirrors.aliyun.com|g' /etc/apt/sources.list
+
+# 安装依赖及中文字体
+RUN apt-get update && apt-get install -y \
+    locales \
+    # 关键：中文字体
+    fonts-wqy-zenhei \  
+    python3 \
+    python3-pip \
+    bash-completion \
+    rlwrap \
+    ipython3 \
+    # 取消中文注释
+    && sed -i 's/# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/' /etc/locale.gen \  
+    && locale-gen zh_CN.UTF-8  # 生成中文环境
+
+# 启用 Bash 补全
+RUN echo "source /etc/bash_completion" >> ~/.bashrc \
+    && echo 'alias python="rlwrap python3"' >> ~/.bashrc
+
+# 配置 Pip 源
+RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+RUN pip install numpy && \
+    useradd -m runner && \
+    mkdir /code && \
+    chown runner:runner /code
+WORKDIR /code
+USER runner

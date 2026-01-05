@@ -1,0 +1,33 @@
+services:
+  app:
+    image: organization:1.0
+    volumes:
+      - File_upload_docker_nfs_volume:/projects/organization/organization/templates/File/upload   # NFS远程文件上传目录
+      - Works_upload_docker_nfs_volume:/projects/organization/organization/templates/Works/upload  # NFS远程作品上传目录
+      - ./db/:/projects/organization/db   # 本地数据库绑定（无需NFS）
+      - /var/run/docker.sock:/var/run/docker.sock  # 关键挂载
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    privileged: true  # 授予特权      
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+# volumes:
+#   upload:
+#   Works_upload:
+# 定义NFS驱动的命名卷
+volumes:
+  File_upload_docker_nfs_volume:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.100.184,rw,nfsvers=4,soft,timeo=300   # NFSv4优化参数
+      device: ":/home/bgp1984/nfs_volume/organization/File/upload"   # NFS服务器共享路径
+
+  Works_upload_docker_nfs_volume:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.100.184,rw,nfsvers=4,soft,timeo=300
+      device: ":/home/bgp1984/nfs_volume/organization/Works/upload"

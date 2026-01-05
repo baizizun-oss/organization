@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<title>试题查询</title>
+</head>
+
+<body>
+<style type="text/css">
+
+th {
+	height:200px;}
+span{
+	font-size:35px;
+	}
+input{
+	width:70px;
+	height:70px;
+	font-size:36px;	
+	}
+input[type="text"]{
+	width:250px;
+	}
+input[type="submit"]{
+	width:250px;
+	height:300px;
+	}
+select{
+	width:100%;
+	}
+tr{
+	height:200px;
+	font-size:48px;
+	}
+th{
+	width:20%;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+
+input[type="submit"]{
+	width:240px; 
+	height:300px; 
+	font-size:36px;
+	}
+
+</style>
+
+<form action="../Question - 拷贝/select" method="post" enctype="multipart/form-data" name="select_form" target="_self">
+<table width="100%" border="1">
+  <tr>
+    <th>题型</th>
+    <td>
+      <select name="type">
+        <option value="single_choice">单选</option>
+        <option value="true_false">判断</option>
+        <option value="operation">操作</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th>模块</th>
+    <td>
+      <select name="module">
+        <option value="python">python</option>
+        <option value="数据分析和应用">数据分析和应用</option>
+        <option value="网络">网络</option>
+        <option value="软硬件">软硬件</option>
+        <option value="数值计算">数值计算</option>
+        <option value="excel">excel</option>
+        <option value="scratch">scratch</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">&nbsp;</th>
+    <td><input type="submit" value="提交"></td>
+  </tr>
+</table>
+
+</form>
+</body>
+</html>

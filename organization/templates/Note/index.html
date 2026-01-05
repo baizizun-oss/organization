@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<script src="__PUBLIC__/Home/Index/ceshi/js/jquery.js" language="javascript"></script>
+<title>任务笔记</title>
+</head>
+
+<body>
+<p><a href="__MODULE__/Feedback/lists"><button>反馈模块</button></a></p>
+<p>
+<a href="__MODULE__/Challenge/lists"><button>质疑列表</button></a>
+<a href="__MODULE__/Impede/select"><button>查找阻力</button></a>
+
+</p>
+<a href="/task/Home/Index/doubleAdd"><button><span>增加</span></button></a>
+<a href="/task/Home/Index/select"><button><span>查找</span></button></a>
+<a href="__MODULE__/Index/all_select"><button><span>全部任务</span></button></a>
+<a href="__MODULE__/Index/fixed_select"><button><span>固定查询</span></button></a>
+<table width="100%" border="1">
+<caption><a href="__ROOT__/version.html">《任务笔记系统》1.0.0</a></caption>
+
+  <tr>
+    <th>序号</th>
+    <th>标题</th>
+    <th hidden="hidden">时间</th>
+    <th>操作</th>
+  </tr>
+<foreach name="note" item="vo">
+  <tr>
+    <td>{$vo["id"]}</td>
+    <td><a href="__APP__?m=Home&c=Index&a=detail&id={$vo['id']}">{$vo["title"]}</a></td>
+    <td hidden="hidden" id="remainder_time">{$vo["remainder_time"]}</td>
+    <td><a href="__ROOT__/index.php?m=Home&c=Index&a=doubleEdit&id={$vo['id']}"><button>编辑</button></a></td>
+    </tr>
+  </foreach>
+</table>
+
+</body>
+</html>

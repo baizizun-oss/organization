@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
+<title>试题列表</title>
+</head>
+
+<body>
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+input{
+	width:50px;
+	height:50px;
+	}
+input[type="submit"]{
+	width:200px; 
+	height:300px; 
+	font-size:36px;
+	}
+input[type="text"]{
+	width:80%;
+	}
+input[type="file"]{
+	width:100%;
+	}
+textarea{
+	width:100%;
+	}	
+</style>
+<table width="100%" border="1">
+<caption style="font-size: 100px;">单选题</caption>
+{%for vo in single_choice_questions%}
+<tr>
+  <th scope="row">第{vo["id"]}题</th>
+  <th scope="row"><img width="500" src="{{static_url('organization/templates/Exam/upload/')+vo['picture']}}"></th>
+  <td><p>
+    <input type="radio" name="{vo['id']}" value="A">
+    <span>A.</span>{vo["choice1"]}</p>
+    <p>
+      <input type="radio" name="{vo['id']}" value="B">
+      <span>B.</span>{vo["choice2"]}</p>
+    <p>
+      <input type="radio" name="{vo['id']}" value="C">
+      <span>C.</span>{vo["choice3"]}</p>
+    <p>
+      <input type="radio" name="{vo['id']}" value="D">
+  <span>D.</span>{vo["choice4"]}</p></td>
+  <td>
+    <button><a href=""></button>
+  </td>
+</tr>
+{%end%}
+</table>
+<table width="100%" border="1">
+<caption style="font-size: 100px;">判断题</caption>
+{%for vo in tf_questions%}
+<tr>
+  <th scope="row">判断题1</th>
+  <th scope="row"><img width="500" src="{{static_url('organization/templates/Exam/upload/')+vo['picture']}}" alt=""></th>
+  <td>&nbsp;</td>
+  <td>
+  <p><input type="radio" name="twenty" value="right">对</p>
+  <p><input type="radio" name="twenty" value="wrong">错</p>
+  </td>
+</tr>
+{%end%}
+</table>
+</body>
+</html>

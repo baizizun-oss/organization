@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<link rel="stylesheet" href="{{static_url('organization/templates/Note/static/kindeditor/themes/default/default.css')}}">
+<script src="{{static_url('organization/templates/Note/static/kindeditor/kindeditor-all.js')}}"></script>
+<title>添加笔记</title>
+</head>
+
+<body>
+
+<script>
+//kindeditor应该是用ajax上传图片的,方法是post
+KindEditor.ready(function(K) {
+    K.create('#editor', {
+      width: '100%',
+      height: '300px',
+      items: ['bold', 'italic', 'image','link'],  // 自定义工具栏
+      uploadJson: 'image_upload'  // 指定图片上传接口[6,10](@ref)这是图片上传的后端地址
+    });
+  });
+</script>
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+input{
+	width:50px;
+	height:50px;
+	}
+input[type="submit"]{
+	width:200px; 
+	height:300px; 
+	font-size:36px;
+	}
+input[type="text"]{
+	width:80%;
+	}
+input[type="file"]{
+	width:100%;
+	}
+textarea{
+	width:100%;
+	}	
+</style>
+<form action="add?uid={{user_id}}" method="post" enctype="multipart/form-data" name="add_form" target="_self">
+  <table width="100%" border="1">
+    <tr>
+      <th scope="row">标题</th>
+      <td><input type="text" name="title"></td>
+    </tr>
+    <tr>
+      <th>内容</th>
+      <td>
+        <textarea id="editor" name="content"></textarea>          
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">所属合集</th>
+      <td>
+        <select name="collection" style="width: 200px;font-size: 30px;">
+          <!--第一个选项-->
+          <option value="1" selected="selected">无</option>
+          <!--其他选项-->
+          {%for vo in my_collections%}
+          {%if vo["id"]!=None%}<option value="{{vo['id']}}">{{vo["name"]}}</option>{%end%}
+          {%end%}
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>访问权限</th>
+      <td>
+        <input type="radio" name="access_level" value="public" checked><span>都可阅读</span>
+        <input type="radio" name="access_level" value="private"><span>仅自己可见</span>
+      </td>
+    </tr>    
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <td><input type="submit" value="提交"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

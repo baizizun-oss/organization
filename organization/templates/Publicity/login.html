@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="../Index - 拷贝/__PUBLIC__/Home/Index/ceshi/js/jquery.js" language="javascript"></script>
+<title>用户登录</title>
+</head>
+
+<body>
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+</style>
+<form action="/organization/Index/login" method="post" enctype="multipart/form-data" name="login_form">
+<table border="1" align="center">
+  <tr>
+    <th scope="row">用户名</th>
+    <td><input type="text" name="username" /></td>
+  </tr>
+  <tr>
+    <th scope="row">密码</th>
+    <td><input type="password" name="password" /></td>
+  </tr>
+  <tr>
+    <th scope="row"><a href="/organization/Index/register"><input type="button" value="注册"/></a></th>
+    <td><a href="javascript:submit()"><button>登录</button></a></td>
+  </tr>
+</table>
+
+</form>
+
+</body>
+</html>

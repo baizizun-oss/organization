@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<title>任务笔记--查找</title>
+</head>
+
+<body>
+<style type="text/css">
+
+th {
+	height:200px;}
+span{
+	font-size:35px;
+	}
+input{
+	width:70px;
+	height:70px;
+	font-size:36px;	
+	}
+input[type="text"]{
+	width:250px;
+	}
+input[type="submit"]{
+	width:250px;
+	height:300px;
+	}
+select{
+	width:100%;
+	}
+tr{
+	height:200px;
+	font-size:48px;
+	}
+th{
+	width:20%;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+
+input[type="submit"]{
+	width:240px; 
+	height:300px; 
+	font-size:36px;
+	}
+
+</style>
+
+<form action="select" method="post" enctype="multipart/form-data" name="select_form" target="_self">
+<table width="100%" border="1">
+  <tr>
+    <th scope="row"><span class="word">关键词</span></th>
+    <td><input type="text" name="keyword"></td>
+  </tr>
+  <tr>
+    <th scope="row"><span class="word">关键词2</span></th>
+    <td><input type="text" name="keyword2"></td>
+  </tr>
+  <tr>
+    <th scope="row">状态</th>
+    <td><table>
+      <tr>
+        <td><input type="radio" name="status" value="未完成"><span>未完成</span></td>
+        </tr>
+      <tr>
+        <td><input type="radio" name="status" value="未处理"><span>未处理</span></td>
+        </tr>        
+      <tr>
+        <td><input type="radio" name="status" value="存疑"><span>存疑</span></td>
+        </tr>
+      <tr>
+        <td>
+          <select name="challenge">
+          <option value=''>无法质疑</option>
+            {%for vo in challenges%}
+            <option value="{{vo[1]}}">{{vo[1]}}({{vo[3]}})</option>
+            {%end%}
+            </select>
+          </td>
+        </tr>
+      <tr>
+        <td><input type="radio" name="status" value="遇阻"><span>遇阻</span></td>
+        </tr>
+      <tr>
+        <td>
+          <select name="impede">
+          <option value=''>没有阻力</option>
+            {%for vi in impedes%}
+              <option value="{{vi[1]}}">{{vi[1]}}({{vi[2]}})</option>
+              {%end%}
+            </select>
+          </td>
+        </tr>
+      <tr>
+        <td><input type="radio" name="status" value="存在前置问题"><span>存在前置问题</span></td>
+        </tr>
+      <tr>
+        <td><input type="radio" name="status" value="存在前置任务"><span>存在前置任务</span></td>
+        </tr>
+      <tr>
+        <td><input type="radio" name="status" value="验证中"><span>验证中</span></td>
+        </tr>
+      <tr>
+        <td>
+          <select name="validating">
+            <option value="">全部</option>
+            <foreach name="validating" item="vo">
+              <option value="{$vo['name']}">{$vo['id']}{$vo['name']}</option>
+              </foreach>
+            </select>
+          </td>
+        </tr>
+      <tr>
+        <td><input type="radio" name="status" value="已完成"><span>已完成</span></td>
+        </tr>
+      <tr>
+        <td><input type="radio" name="status" value="除“已完成”外所有状态"><span>"除“已完成”外所有状态"</span></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <th scope="row"><span class="word">地点</span></th>
+    <td>
+      <input type="checkbox" name="address[]" value="广场家"><span>广场家</span>
+      <input type="checkbox" name="address[]" value="新一高家"><span>新一高家</span>
+      <input type="checkbox" name="address[]" value="一店"><span>一店</span>
+      <input type="checkbox" name="address[]" value="三高"><span>三高</span>
+      <input type="checkbox" name="address[]" value="三高公寓"><span>三高公寓</span>
+      <input type="checkbox" name="address[]" value="三高办公室"><span>三高办公室</span>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row"><span class="word">类型</span></th>
+    <td>
+    <input type="checkbox" name="type[]" value="IT"><span>IT</span>
+    <input type="checkbox" name="type[]" value="生活"><span>生活</span>
+    <input type="checkbox" name="type[]" value="任务"><span>任务</span>
+    <input type="checkbox" name="type[]" value="心得"><span>心得</span>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">&nbsp;</th>
+    <td><input type="submit" value="提交"></td>
+  </tr>
+</table>
+
+</form>
+</body>
+</html>

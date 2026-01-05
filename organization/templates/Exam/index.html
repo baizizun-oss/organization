@@ -1,0 +1,279 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
+<title>开始认证</title>
+<style>
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  
+  body {
+      font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+      background: linear-gradient(135deg, #1a2a6c, #2c3e50);
+      color: #ecf0f1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      line-height: 1.6;
+  }
+  
+  .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 20px 0;
+      width: 100%;
+      max-width: 800px;
+  }
+  
+  .header h1 {
+      font-size: 2.8rem;
+      font-weight: 300;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      position: relative;
+      display: inline-block;
+  }
+  
+  .header h1::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 25%;
+      right: 25%;
+      height: 3px;
+      background: linear-gradient(to right, transparent, #3498db, transparent);
+  }
+  
+  .header p {
+      font-size: 1.2rem;
+      opacity: 0.85;
+      max-width: 600px;
+      margin: 0 auto;
+  }
+  
+  .certification-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      width: 100%;
+      max-width: 900px;
+      margin-bottom: 40px;
+  }
+  
+  .cert-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+  }
+  
+  .cert-card:hover {
+      transform: translateY(-8px);
+      background: rgba(52, 152, 219, 0.15);
+      border-color: rgba(52, 152, 219, 0.3);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  .cert-card a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      width: 100%;
+      height: 100%;
+      font-size: 1.8rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+  }
+  
+  .cert-type {
+      display: block;
+      font-size: 1rem;
+      opacity: 0.8;
+      margin-top: 10px;
+      font-weight: 300;
+  }
+  
+  .footer {
+      margin-top: auto;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+      .header h1 {
+          font-size: 2.2rem;
+      }
+      
+      .cert-card a {
+          font-size: 1.5rem;
+      }
+      
+      .certification-grid {
+          grid-template-columns: 1fr;
+          max-width: 500px;
+      }
+  }
+</style>
+
+</head>
+
+<body>
+
+<form action="index?module={{module}}&type={{question_type}}&question_id={{question['id']}}" method="post" enctype="multipart/form-data" name="add_form" target="_self">
+  <div class="header">
+    <h1>机器人技术认证中心</h1>
+    <p>考试时间一个小时，超时将无法提交。中途不要刷新页面，否则可能认证失败！</p>
+    <p>如果题目中需要输入数据，输入文件名为"data.in"，可以用open("data.in")打开后获取，每一行为一组数据</p>
+  </div>
+  <div class="certification-grid">
+  <table width="100%" border="1">
+    <tr>
+      <th>题目id</th>
+      <td>{{question["id"]}}</td>
+    </tr>    
+    <tr>
+      <th>题目描述</th>
+      <td>{{question["title"]}}</td>
+    </tr>
+    <tr>
+      <th>提示</th>
+      <td>{{question["notice"]}}</td>
+    </tr>
+    <tr>
+      <th>输入格式</th>
+      <td>{{question["input_format"]}}</td>
+    </tr>
+    <tr>
+      <th>输出格式</th>
+      <td>{{question["output_format"]}}</td>
+    </tr>
+    <tr>
+      <th scope="row">请将写好的代码提交，用题目id作文件名</th>
+      <td><input name="user_code" type="file"></td>
+      <td><input type="submit" value="提交"></td>
+    </tr>
+  </table>
+  </div>
+</form>
+</body>
+<script>
+  // 1. 初始化倒计时参数
+  const EXAM_DURATION = 60 * 60 * 1000; // 考试时间1小时(毫秒)
+  const TIMER_ELEMENT_ID = "exam-timer";
+  const WARNING_THRESHOLD = 10 * 60 * 1000; // 最后10分钟警告
+  const DANGER_THRESHOLD = 5 * 60 * 1000; // 最后5分钟危险
+  let timerInterval;
+  let isPageVisible = true;
+  let startTime = Date.now();
+  
+  // 2. 缓存DOM元素(优化性能)[2](@ref)
+  const timerEl = document.createElement("div");
+  timerEl.id = TIMER_ELEMENT_ID;
+  timerEl.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+  `;
+  document.querySelector(".header").after(timerEl);
+  
+  // 3. 格式化时间显示(两位数)[3](@ref)
+  function formatTimeUnit(value) {
+    return value.toString().padStart(2, '0');
+  }
+  
+  // 4. 核心倒计时函数(优化计算)[6](@ref)
+  function updateTimer() {
+    const elapsed = Date.now() - startTime;
+    const remaining = EXAM_DURATION - elapsed;
+    
+    if (remaining <= 0) {
+      clearInterval(timerInterval);
+      timerEl.innerHTML = "00:00:00";
+      timerEl.style.background = "rgba(231, 76, 60, 0.9)";
+      alert("考试时间已结束，系统将自动提交!");
+      document.add_form.submit();
+      return;
+    }
+  
+    // 高性能时间计算[6](@ref)
+    const hours = Math.floor(remaining / (1000 * 60 * 60));
+    const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+  
+    // 更新显示
+    timerEl.innerHTML = `${formatTimeUnit(hours)}:${formatTimeUnit(minutes)}:${formatTimeUnit(seconds)}`;
+    
+    // 视觉警告[3](@ref)
+    if (remaining < DANGER_THRESHOLD) {
+      timerEl.style.background = "rgba(231, 76, 60, 0.8)";
+      timerEl.style.animation = "pulse 1s infinite";
+    } else if (remaining < WARNING_THRESHOLD) {
+      timerEl.style.background = "rgba(241, 196, 15, 0.8)";
+    }
+  }
+  
+  // 5. 处理页面可见性变化(优化性能)[2](@ref)
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") {
+      isPageVisible = false;
+    } else {
+      isPageVisible = true;
+      // 校正时间偏移
+      startTime += (Date.now() - startTime - (EXAM_DURATION - (timerEl.dataset.remaining || EXAM_DURATION)));
+      updateTimer();
+    }
+  });
+  
+  // 6. 防止刷新页面导致考试中断
+  window.addEventListener("beforeunload", (e) => {
+    if (parseInt(timerEl.dataset.remaining) > 0) {
+      e.preventDefault();
+      e.returnValue = "考试进行中，确定要离开吗？离开后考试将自动提交！";
+    }
+  });
+  
+  // 7. 启动倒计时
+  updateTimer();
+  timerInterval = setInterval(updateTimer, 1000);
+  
+  // 8. 添加动画样式
+  const style = document.createElement("style");
+  style.textContent = `
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+    }
+  `;
+  document.head.appendChild(style);
+</script>  
+</html>

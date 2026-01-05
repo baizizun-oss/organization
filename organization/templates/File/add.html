@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
+<title>新增</title>
+</head>
+
+<body>
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+input{
+	width:50px;
+	height:50px;
+	}
+input[type="submit"]{
+	width:200px; 
+	height:300px; 
+	font-size:36px;
+	}
+input[type="text"]{
+	width:80%;
+	}
+input[type="file"]{
+	width:100%;
+	}
+span[id="xinghao"]{
+	color:#F00}
+
+</style>
+<form action="add?uid={{uid}}" method="post" enctype="multipart/form-data" name="add_form" target="_self">
+  <table width="100%" border="1">
+    <tr>
+      <th scope="row">(<span id="xinghao">*</span>)上传文件</th>
+      <td><input type="file" name="file" /></td>
+    </tr>
+    <tr>
+      <th scope="row">(<span id="xinghao">*</span>)助记名(自己能记住的文件别名)</th>
+      <td><input type="text" name="easy_memorize_name" /></td>
+    </tr>
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <td><input type="submit" value="提交"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

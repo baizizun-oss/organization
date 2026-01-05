@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
+<title>决议列表</title>
+</head>
+{% import time %}
+{% import re %}
+<body>
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+input{
+	width:50px;
+	height:50px;
+	}
+input[type="submit"]{
+	width:200px; 
+	height:300px; 
+	font-size:36px;
+	}
+input[type="text"]{
+	width:80%;
+	}
+input[type="file"]{
+	width:100%;
+	}
+textarea{
+	width:100%;
+	}	
+</style>
+<table width="100%" border="1">
+<caption style="font-size: 100px;">已通过决议</caption>
+<tr>
+  <th scope="row"><div align="center"><strong>通过时间</strong></div></th>
+  <th scope="row"><div align="center"><strong>决议内容</strong></div></th>
+  <th scope="row"><div align="center"><strong>所要解决的问题</strong></div></th>
+  <th scope="row"><div align="center"><strong>执行状况</strong></div></th>
+</tr>
+{%for vo in resolutions%}
+<tr>
+  <td>{{time.strftime('%Y-%m-%d',time.localtime(int(vo['pass_time'])))}}</td>
+  <td>{{vo['content']}}</td>
+  <td>{{vo['problem']}}</td>
+  <td>{{vo['execution_status']}}</td>
+</tr>
+{%end%}
+</table>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>机器人技术认证中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50);
+            color: #ecf0f1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .header h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+            right: 25%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #3498db, transparent);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 40px;
+        }
+        
+        .cert-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-8px);
+            background: rgba(52, 152, 219, 0.15);
+            border-color: rgba(52, 152, 219, 0.3);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cert-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            width: 100%;
+            height: 100%;
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        
+        .cert-type {
+            display: block;
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+        
+        .footer {
+            margin-top: auto;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .cert-card a {
+                font-size: 1.5rem;
+            }
+            
+            .certification-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>机器人编程社团</h1>
+        <p>欢迎你的到来，现在就去开启机器人技术之旅吧</p>
+    </div>
+
+    <!-- 积分信息栏 -->
+    <div class="score-bar">
+      <a href="click_statistics?user_id={{user_id}}">
+          <i class="fas fa-history"></i>签到历史
+      </a>
+      <span><i class="fas fa-calendar-alt"></i>本月积分: {{month_score}}</span>
+      <span><i class="fas fa-medal"></i>总积分: {{sum_score}}</span>
+  </div>
+
+    <div class="certification-grid">
+        <div class="cert-card">
+            <a href="/organization/Exam/select_module">
+                认证
+                <span class="cert-type">相关技术能力认证</span>
+            </a>
+        </div>
+
+        <div class="cert-card">
+            <a href="/organization/Works/lists">
+                作品
+                <span class="cert-type">社团成员作品</span>
+            </a>
+        </div>        
+
+        <div class="cert-card">
+            <a href="/organization/File/list?uid={{user_id}}">
+                云盘
+                <span class="cert-type">个人专属存储空间</span>
+            </a>
+        </div>
+
+		<div class="cert-card">
+            <a href="/organization/Note/list?user_id={{user_id}}">
+                笔记
+                <span class="cert-type">记录所学所思所得</span>
+            </a>
+        </div>
+
+        <div class="cert-card">
+            <a href="/organization/Competition/lists?user_id={{user_id}}">
+                比赛
+                <span class="cert-type">赢得强者才有的荣誉</span>
+            </a>
+        </div>
+        
+        <div class="cert-card">
+            <a href="/organization/Record/lists">
+                实录
+                <span class="cert-type">记录过程记录成长</span>
+            </a>
+        </div>
+
+    </div>
+    
+    <div class="footer">
+        <p>© 2024 机器人编程社团 | 机器人领域专业技术社团</p>
+    </div>
+</body>
+</html>

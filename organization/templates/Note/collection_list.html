@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
+<title>我的合集</title>
+
+</head>
+
+<body>
+<table width="100%">
+
+</table>  
+<table width="100%" border="1">
+  <tr>
+    <td align="center"><a href="list?user_id={{my_collections[0]['user_id']}}"><button>我的笔记</button></a></td>
+    <td align="center"><a href="add_collection?user_id={{my_collections[0]['user_id']}}"><button>添加合集</button></a></td>
+  </tr>
+  <caption style="font-size: 50px;">合集列表</caption>
+  <tr>
+    <th>序号</th>
+    <th>标题</th>
+    <th>操作</th>
+  </tr>
+  {%for vo in my_collections%}
+  <tr>
+    <td>{{vo["id"]}}</td>
+    <td><a href="list?user_id={{my_collections[0]['user_id']}}&collection_id={{vo['id']}}">{{vo["name"]}}</a></td>
+    <td><a href="del_collection?user_id={{my_collections[0]['user_id']}}&collection_id={{vo['id']}}">删除</a></td>
+    </tr>
+  {%end%}
+</table>
+
+</body>
+</html>

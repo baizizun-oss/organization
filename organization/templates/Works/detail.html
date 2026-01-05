@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>详细页</title>
+<style>
+.video-detail-container {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f5f2eb; /* 契合古典氛围的米色背景 */
+}
+
+.castle-video {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border: 2px solid #8b7355; /* 复古木纹边框 */
+}
+
+.comment-section {
+  width: 80%;
+  margin: 30px auto;
+  border: 1px solid #dcd8c0;
+  background: #fffdf9;
+}
+
+.section-title {
+  font-size: 24px;
+  color: #5d432c;
+  padding: 15px;
+  font-family: '楷体', cursive; /* 中文书法字体 */
+}
+
+.comment-item {
+  border-top: 1px dashed #dcd8c0;
+  padding: 15px 0;
+}
+
+.user-avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #8b7355;
+}
+
+.comment-content {
+  width: 100%;
+  padding: 10px;
+}
+
+.username {
+  color: #5d432c;
+  font-weight: bold;
+}
+
+.comment-time {
+  color: #999;
+  font-size: 0.9em;
+  text-align: right;
+}
+
+.comment-text {
+  color: #666;
+  line-height: 1.6;
+  padding: 10px 0;
+}
+</style>
+</head>
+<body>
+
+<table class="video-detail-container">
+  <!-- 视频播放区域 -->
+  <tr>
+    <td colspan="2" class="video-main">
+      <table class="video-player" width="100%" align="center">
+        <tr>
+          <td>
+            <video controls class="castle-video" poster="封面图路径">
+              <source src="{{static_url('organization/templates/Works/upload/')+work['works_introduction_video']}}" type="video/mp4">
+              您的浏览器不支持视频播放
+            </video>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="{{static_url('organization/templates/Works/upload/')+work['works_file']}}"><button style="font-size: 50px;">点击下载源码</button></a>
+    </td>
+  </tr>
+  <!-- 评论区 -->
+  <tr>
+    <td colspan="2">
+      <table class="comment-section">
+        <thead>
+          <tr>
+            <th colspan="2" class="section-title">用户评论（{{comments_number}}条）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 评论项 -->
+          <tr class="comment-item">
+            <td class="user-avatar">
+              < img src="avatar1.jpg" alt="用户头像">
+            </td>
+            <td>
+              <table class="comment-content">
+                {%for key in comments%}
+                <tr>
+                  <td class="username">{{key["name"]}}</td>
+                  <td class="comment-time">2024-03-25</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="comment-text">{{key["comment"]}}</td>
+                </tr>
+                {%end%}
+              </table>
+            </td>
+          </tr>
+          <!-- 更多评论项... -->
+        </tbody>
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

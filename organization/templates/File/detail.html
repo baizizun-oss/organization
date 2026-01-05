@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>详细页</title>
+</head>
+
+<body>
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+</style>
+<table width="100%" border="1">
+<tr>
+  <th scope="row">内容</th>
+  <td>{{file["easy_memorize_name"]}}</td>
+</tr>
+<tr>
+  <th scope="row">&nbsp;</th>
+  <td><a href="{{static_url('fileserver_upload/')+file['filepath']}}">点击下载</a></td>
+</tr>
+</table>
+</body>
+</html>

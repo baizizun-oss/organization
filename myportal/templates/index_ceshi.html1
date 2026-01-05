@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>我的入口</title>
+</head>
+
+<body>
+<style>
+button{
+	width:100%;
+	height:300px;
+	font-size:48px;
+	}
+a[id=fileserver]{
+	font-size:60px;
+	}
+</style>
+
+<table width="100%" border="1">
+<foreach name="click" item="vo">
+  <tr>
+    <th scope="row"><a href="__ROOT__/..{$vo['click_action']}"><button>{$vo["click_action"]}</button></a></th>
+  </tr>
+</foreach> 
+  <tr>
+    <th scope="row"><a href="__ROOT__/index.php?m=Home&c=Explain&a=lists">
+      <button>说明</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/index.php/Home/Index/lists">
+      <button>系统bug</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/operation_order">
+      <button>一键执行运行秩序</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/index.php?m=Home&c=Index&a=quick_select">
+      <button>一键查询六个系统</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/index.php?m=Home&c=Index&a=all_select">
+      <button>一键查询六个系统(包括未到处理时间)</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../problem">
+      <button>problem</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../problem_develop">
+      <button>problem_develop</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../problem_develop_test">
+      <button>problem_develop_test</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../task">
+      <button>task</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../task_develop">
+      <button>task_develop</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../task_develop_test">
+      <button>task_develop_test</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="http://221.176.209.238/yingermianyi/index.php/Admin/Deliver/lists">
+      <button>yingermianyi</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="{$fileserver_url}" id="fileserver">文件管理系统</a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../technology_blog">
+      <button>techonlogy_blog</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../finance">
+      <button>财务管理</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="http://221.176.209.238:81/gateway_manager/index.php/Home/Index/terminal">
+      <button>上网认证</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../campus/index.php/Fix/apply/index">
+      <button>网络维修</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../blog">
+      <button>我的blog</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../warehouse_manager/index.php?m=Home&c=Index&a=lists">
+      <button>仓库管理</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../quantitative_score">
+      <button>班级量化成绩统计系统</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../sangao/student_union/index.php/Home/index/login">
+      <button>学生会</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../money/index.php/Home/Index/lists">
+      <button>资金管理系统</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../sangao/student_manager/index.php/Home/Index/lists">
+      <button>学生管理</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../myportal/index.php/Home/Holiday/lists">
+      <button>下班时间</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../myportal/index.php/Home/Holiday/lists">
+      <button>微信聊天记录</button>
+    </a></th>
+  </tr>
+  <tr>
+    <th scope="row"><a href="__ROOT__/../sangao/index.php/Learn/Index/lists">
+      <button>电脑培训</button>
+    </a></th>
+  </tr>
+ 
+</table>
+
+</body>
+</html>

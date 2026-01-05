@@ -1,0 +1,755 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>条目列表</title>
+</head>
+
+<body>
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+caption{
+	font-size:48px;
+	color:#F00;
+	}
+</style>
+<table width="100%" border="1">
+  <tr>
+    <td>序号</td>
+    <td>标题</td>
+    <td>操作</td>
+  </tr>
+    {%for vo in problem_12%}
+  <foreach name="problem_12" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_12%}
+  <foreach name="taskdevelop_test_12" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_12%}
+  <foreach name="task_develop_12" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_12%}
+  <foreach name="task_12" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>  
+
+
+  {%for vo in problem_13%}
+  <foreach name="problem_13" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_13%}
+  <foreach name="taskdevelop_test_13" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_13%}
+  <foreach name="task_develop_13" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_13%}
+  <foreach name="task_13" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>  
+
+  {%for vo in problem_14%}
+  <foreach name="problem_14" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_14%}
+  <foreach name="taskdevelop_test_14" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_14%}
+  <foreach name="task_develop_14" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_14%}
+  <foreach name="task_14" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in problem_15%}
+  <foreach name="problem_15" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_15%}
+  <foreach name="taskdevelop_test_15" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_15%}
+  <foreach name="task_develop_15" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_15%}
+  <foreach name="task_15" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>  
+
+  {%for vo in problem_16%}
+  <foreach name="problem_16" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_16%}
+  <foreach name="taskdevelop_test_16" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_16%}
+  <foreach name="task_develop_16" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_16%}
+  <foreach name="task_16" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in problem_17%}
+  <foreach name="problem_17" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_17%}
+  <foreach name="taskdevelop_test_17" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_17%}
+  <foreach name="task_develop_17" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_17%}
+  <foreach name="task_17" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>  
+
+  {%for vo in problem_18%}
+  <foreach name="problem_18" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_18%}
+  <foreach name="taskdevelop_test_18" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_18%}
+  <foreach name="task_develop_18" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_18%}
+  <foreach name="task_18" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in problem_19%}
+  <foreach name="problem_19" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_19%}
+  <foreach name="taskdevelop_test_19" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_19%}
+  <foreach name="task_develop_19" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_19%}
+  <foreach name="task_19" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+
+  {%for vo in problem_20%}
+  <foreach name="problem_20" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_20%}
+  <foreach name="taskdevelop_test_20" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_20%}
+  <foreach name="task_develop_20" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_20%}
+  <foreach name="task_20" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+
+  {%for vo in problem_10%}
+  <foreach name="problem_10" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_10%}
+  <foreach name="task_develop_test_10" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_10%}
+  <foreach name="task_develop_10" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_10%}
+  <foreach name="task_10" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in problem_11%}
+  <foreach name="problem_11" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_11%}
+  <foreach name="task_develop_test_11" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  </foreach>
+  {%for vo in task_develop_11%}
+  <foreach name="task_develop_11" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_11%}
+  <foreach name="task_11" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+
+
+
+  {%for vo in problem_1%}
+  <foreach name="problem_1" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_1%}
+  <foreach name="taskdevelop_test_1" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_1%}
+  <foreach name="task_develop_1" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_1%}
+  <foreach name="task_1" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>  
+  {%for vo in problem_2%}
+  <foreach name="problem_2" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_2%}
+  <foreach name="task_develop_test_2" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_2%}
+  <foreach name="task_develop_2" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_2%}
+  <foreach name="task_2" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>  
+  {%for vo in problem_3%}
+  <foreach name="problem_3" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_3%}
+  <foreach name="task_develop_test_3" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_3%}
+  <foreach name="task_develop_3" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_3%}
+  <foreach name="task_3" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>  
+
+  {%for vo in problem_4%}
+  <foreach name="problem_4" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_4%}
+  <foreach name="task_develop_test_4" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_4%}
+  <foreach name="task_develop_4" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_4%}
+  <foreach name="task_4" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>    
+  {%for vo in problem_5%}
+  <foreach name="problem_5" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_5%}
+  <foreach name="task_develop_test_5" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_5%}
+  <foreach name="task_develop_5" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_5%}
+  <foreach name="task_5" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>    
+
+
+  {%for vo in problem_7%}
+  <foreach name="problem_7" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_7%}
+  <foreach name="task_develop_test_7" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_7%}
+  <foreach name="task_develop_7" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_7%}
+  <foreach name="task_7" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>    
+  {%for vo in problem_8%}
+  <foreach name="problem_8" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+  {%for vo in task_develop_test_8%}
+  <foreach name="task_develop_test_8" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_develop_8%}
+  <foreach name="task_develop_8" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>
+
+  {%for vo in task_8%}
+  <foreach name="task_8" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/Home/Index/detail?id={{vo[0]}}">{{vo[3]}}</a></td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}"><button>编辑</button></a></td>
+    </tr>
+    {%end%}
+  </foreach>    
+
+</table>
+
+</body>
+</html>
+<script>
+$().ready(function(e) {
+	alert("result");
+    $().append('<h1>niah</h1>');
+});
+$().load(function(e) {
+    alert("load_result");
+});
+
+$(document).ready=function(){
+	alert("niha");}
+window.onload = function(){
+	alert("test");
+	//获取页面加载完成时的时间戳
+	var endtime=new Date().getTime();
+	//从服务器获取计时开始时间
+	<php>echo "var starttime=".$starttime.";";</php>
+	//在页面上显示查询花费时长
+	document.write("<h1>"+endtime-starttime+"</h1>");
+	}
+</script>

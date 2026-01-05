@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!--当前页面每10秒刷新一次-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>后台管理</title>
+</head>
+
+<body>
+
+
+<table border="1" align="center">
+<caption valign="bottom" align="center" style="font-size:36px;">
+用户访问记录
+</caption>
+  <tr>
+    <th scope="col">访问的模块</th>
+    <th scope="col">访问次数</th>
+  </tr>
+  {%for vo in clicks%}
+  <tr>
+    <th scope="col">{{vo[1]}}</th>
+    <th scope="col">{{vo[0]}}</th>
+  </tr>
+  {%end%}
+</table>
+
+</body>
+</html>
+ 

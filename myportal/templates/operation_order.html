@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<script src="jquery.js" language="javascript"></script>
+<title>六系统--查找</title>
+</head>
+
+<body>
+<style type="text/css">
+
+th {
+	height:200px;}
+span{
+	font-size:35px;
+	}
+input{
+	width:70px;
+	height:70px;
+	font-size:36px;	
+	}
+input[type="text"]{
+	width:250px;
+	}
+input[type="submit"]{
+	width:250px;
+	height:300px;
+	}
+select{
+	width:100%;
+	}
+tr{
+	height:200px;
+	font-size:48px;
+	}
+th{
+	width:20%;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+
+input[type="submit"]{
+	width:240px; 
+	height:200px; 
+	font-size:36px;
+	}
+
+</style>
+
+<form action="/myportal/Home/Index/operation_order" method="post" enctype="multipart/form-data" name="select_form" target="_self">
+<table width="100%" border="1">
+  <tr>
+    <th scope="row"><span class="word">地点</span></th>
+    <td><input type="checkbox" name="address[]" value="广场家">
+      <span>广场家</span>
+      <input type="checkbox" name="address[]" value="新一高家">
+      <span>新一高家</span>
+      <input type="checkbox" name="address[]" value="三高">
+      <span>三高</span></td>
+  </tr>
+  <tr>
+    <th scope="row">&nbsp;</th>
+    <td><input type="submit" value="提交" id="submit" onClick="onclick();"></td>
+  </tr>
+</table>
+
+</form>
+</body>
+</html>
+<script>
+$().ready(function(e) {
+    //alert("operation_order");
+});
+$('submit').click(function(e) {
+    var starttime=new Date().getTime();
+	$('submit').val(starttime);
+});
+</script>

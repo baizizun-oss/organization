@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+
+<title>编辑说明</title>
+</head>
+
+<body>
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+
+input[type="submit"]{
+	width:200px; 
+	height:300px; 
+	font-size:36px;
+	}
+
+textarea{
+	width:100%;
+	}
+input[type="radio"]{
+	width:50px;
+	height:50px;
+	}
+</style>
+<form action="/myportal/Home/Explain/doubleEdit?id={{explain['id']}}" method="post" enctype="multipart/form-data" name="edit">
+<table width="100%" border="1">
+  <tr>
+    <th scope="row">标题</th>
+    <th scope="row">{{explain["id"]}}{{explain["name"]}}</th>
+  </tr>
+  <tr>
+    <th scope="row">内容</th>
+    <th scope="row">
+    <textarea rows="20" name="content">{{explain["content"]}}</textarea>
+    </th>
+  </tr>
+  <tr>
+    <th scope="row">状态</th>
+    <td scope="row">
+    <input type="radio" name="status" value="abled" {%if explain['status']=="abled"%} checked{%end%}><span>生效</span>
+    <input type="radio" name="status" value="disabled" {%if explain['status']=="disabled"%} checked{%end%}><span>失效</span>
+    </td>
+  </tr>
+  <tr>
+    <th scope="row">&nbsp;</th>
+    <th scope="row"><input type="submit" name="submit" value="提交"></th>
+  </tr>
+</table>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="__PUBLIC__/Home/Index/ceshi/js/jquery.js" language="javascript"></script>
+<title>条目列表</title>
+</head>
+
+<body>
+<style>
+tr{
+	height:200px;
+	font-size:48px;
+	}
+button{
+	width:100px;
+	height:100px;
+	}
+caption{
+	font-size:48px;
+	color:#F00;
+	}
+</style>
+<table width="100%" border="1">
+  <caption>
+    问题笔记系统开发版测试版
+  </caption>
+  <tr>
+    <td>序号</td>
+    <td>标题</td>
+    <td hidden="hidden">时间</td>
+    <td>操作</td>
+  </tr>
+  <foreach name="problem_develop_test" item="vo">
+  {%for vo in problem_develop_tests%}
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem_develop_test/index.php?m=Home&c=Index&a=detail&id={$vo['id']}&keyword1={$keyword1}&keyword2={$keyword2}&keyword3={$keyword3}">{{vo[3]}}</a></td>
+      <td hidden="hidden" id="remainder_time5">{$vo["remainder_time"]}</td>
+      <td><a href="/problem_develop_test/Home/Index/doubleEdit?id={{vo[0]}}">
+        <button>编辑</button>
+      </a></td>
+    </tr>
+    {%end%}
+  </foreach>
+</table>
+<table width="100%" border="1">
+  <caption>
+    任务笔记系统开发版测试版
+  </caption>
+  <tr>
+    <td>序号</td>
+    <td>标题</td>
+    <td hidden="hidden">时间</td>
+    <td>操作</td>
+  </tr>
+  <foreach name="task_develop_test" item="vo">
+  {%for vo in task_develop_tests%}
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop_test/index.php?m=Home&c=Index&a=detail&id={$vo['id']}&keyword1={$keyword1}&keyword2={$keyword2}&keyword3={$keyword3}">{{vo[3]}}</a></td>
+      <td hidden="hidden" id="remainder_time6">{$vo["remainder_time"]}</td>
+      <td><a href="/task_develop_test/Home/Index/doubleEdit?id={{vo[0]}}">
+        <button>编辑</button>
+      </a></td>
+    </tr>
+  </foreach>
+  {%end%}
+</table>
+<table width="100%" border="1">
+  <caption>
+    问题笔记系统开发版
+  </caption>
+  <tr>
+    <td>序号</td>
+    <td>标题</td>
+    <td hidden="hidden">时间</td>
+    <td>操作</td>
+  </tr>
+  <foreach name="problem_develop" item="vo">
+  {%for vo in problem_develops%}
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/problem_develop/index.php?m=Home&c=Index&a=detail&id={$vo['id']}&keyword1={$keyword1}&keyword2={$keyword2}&keyword3={$keyword3}">{$vo["title"]}</a></td>
+      <td hidden="hidden" id="remainder_time">{$vo["remainder_time"]}</td>
+      <td><a href="/problem_develop/Home/Index/doubleEdit?id={{vo[0]}}">
+        <button>编辑</button>
+      </a></td>
+    </tr>
+  </foreach>
+  {%end%}
+</table>
+<table width="100%" border="1">
+  <caption>
+    任务笔记系统开发版
+  </caption>
+  <tr>
+    <td>序号</td>
+    <td>标题</td>
+    <td hidden="hidden">时间</td>
+    <td>操作</td>
+  </tr>
+  {%for vo in task_develops%}
+  <foreach name="task_develop" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task_develop/index.php?m=Home&c=Index&a=detail&id={$vo['id']}&keyword1={$keyword1}&keyword2={$keyword2}&keyword3={$keyword3}">{{vo[3]}}</a></td>
+      <td hidden="hidden" id="remainder_time4">{$vo["remainder_time"]}</td>
+      <td><a href="/task_develop/Home/Index/doubleEdit?id={{vo[0]}}">
+        <button>编辑</button>
+      </a></td>
+    </tr>
+  </foreach>
+  {%end%}
+</table>
+<table width="100%" border="1">
+  <caption>
+    问题笔记系统
+  </caption>
+  <tr>
+    <td>序号</td>
+    <td>标题</td>
+    <td hidden="hidden">时间</td>
+    <td>操作</td>
+  </tr>
+  {%for vo in problems%}
+  <foreach name="problem" item="vo">
+    <tr>
+      <td>{$vo["id"]}</td>
+      <td><a href="/problem/index.php?m=Home&c=Index&a=detail&id={$vo['id']}&keyword1={$keyword1}&keyword2={$keyword2}&keyword3={$keyword3}">{$vo["title"]}</a></td>
+      <td hidden="hidden" id="remainder_time">{$vo["remainder_time"]}</td>
+      <td><a href="/problem/Home/Index/doubleEdit?id={{vo[0]}}">
+        <button>编辑</button>
+      </a></td>
+    </tr>
+  </foreach>
+  {%end%}
+</table>
+<table width="100%" border="1">
+  <caption>
+    任务笔记系统
+  </caption>
+  <tr>
+    <td>序号</td>
+    <td>标题</td>
+    <td hidden="hidden">时间</td>
+    <td>操作</td>
+  </tr>
+  {%for vo in tasks%}
+  <foreach name="task" item="vo">
+    <tr>
+      <td>{{vo[0]}}</td>
+      <td><a href="/task/index.php?m=Home&c=Index&a=detail&id={$vo['id']}&keyword1={$keyword1}&keyword2={$keyword2}&keyword3={$keyword3}">{{vo[3]}}</a></td>
+      <td hidden="hidden" id="remainder_time2">{$vo["remainder_time"]}</td>
+      <td><a href="/task/Home/Index/doubleEdit?id={{vo[0]}}">
+        <button>编辑</button>
+      </a></td>
+    </tr>
+  </foreach>
+  {%end%}
+</table>
+</body>
+</html>

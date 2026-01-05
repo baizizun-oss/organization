@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+{%import time%}
+<title>下班时间列表</title>
+</head>
+
+<body>
+<a href="/myportal/Home/Holiday/doubleAdd"><button>新增放假</button></a>
+
+<table width="100%" border="1">
+  <tr>
+    <th>序号</th>
+    <th>开始时间</th>
+	<th>结束时间</th>
+	<th>操作</th>
+  </tr>
+<foreach name="holiday" item="vo">
+{%for vo in holidays%}
+  <tr>
+    <td>{{vo[0]}}</td>
+    <td>{{time.strftime("%Y-%m-%d %H:%M",time.localtime(vo[1]))}}</td>
+    <td>{{time.strftime("%Y-%m-%d %H:%M",time.localtime(vo[2]))}}</td>
+    <td><a href="__CONTROLLER__/edit/id/{{vo[0]}}"><button>编辑</button></a></td>
+  </tr>
+</foreach>
+{%end%}
+</table>
+</body>
+</html>

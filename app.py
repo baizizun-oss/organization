@@ -110,14 +110,20 @@ if __name__ == '__main__':
         , (r'/organization_admin/Resolution/add', organization_admin.ResolutionController.addHandler)
         , (r'/organization_admin/Competition/lists', organization_admin.CompetitionController.listsHandler)
         , (r'/organization_admin/Competition/add', organization_admin.CompetitionController.addHandler)
-        , (r'/organization/Competition/detail', organization.CompetitionController.detailHandler)        
-        ,(r'/static_jobs_recordings/(.*)', StaticFileHandler, {'path': config.get_path("jobs","recordings")})
+        , (r'/organization/Competition/detail', organization.CompetitionController.detailHandler)     
         , (r'/organization_admin/Signin/expected_signin_time_lists', organization_admin.SigninController.expectedSigninlistsHandler)    
-        , (r'/organization_admin/Competition/edit', organization_admin.CompetitionController.editHandler)
+        , (r'/organization_admin/Competition/edit', organization_admin.CompetitionController.editHandler)           
+        #静态资源路由
+        # ,(r'/static_jobs_recordings/(.*)', StaticFileHandler, {'path': config.get_path("jobs","recordings")})
+        ,(r'/static_single_choice_question_images/(.*)', StaticFileHandler, {'path': config.get_path("sangao","Question","images","single_choice")})
+        ,(r'/static_multiple_choice_question_images/(.*)', StaticFileHandler, {'path': config.get_path("sangao","Question","images","multiple_choice")})
+        ,(r'/static_fill_blank_question_images/(.*)', StaticFileHandler, {'path': config.get_path("sangao","Question","images","fill_blank")})
+
+
         ],
         template_path=os.path.join(os.path.dirname(__file__), ""),
-        static_path=os.path.join(common.BASE_DIR, ""),
-        static_url_prefix="/organization/static/",        
+        static_path=os.path.join(os.path.dirname(__file__), ""),  # 启用静态文件服务
+        # static_url_prefix="/organization/static/",        
         autoreload=True,
         compiled_template_cache=False,
         # 允许最大 5GB 请求体

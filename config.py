@@ -4,64 +4,73 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-UPLOAD_ROOT = os.getenv("STORAGE_ROOT", os.path.join(BASE_DIR, "upload")) #此为sangao和sangao_admin共同使用的上传目录
-SANGAO_PATH = os.getenv("SANGAO_PATH", os.path.join(BASE_DIR, "sangao"))
-SANGAO_ADMIN_PATH = os.getenv("SANGAO_ADMIN_PATH", os.path.join(BASE_DIR, "sangao_admin"))
+UPLOAD_ROOT = os.getenv("STORAGE_ROOT", os.path.join(BASE_DIR, "upload")) #此为organization和organization_admin共同使用的上传目录
+organization_PATH = os.getenv("organization_PATH", os.path.join(BASE_DIR, "organization"))
+organization_ADMIN_PATH = os.getenv("organization_ADMIN_PATH", os.path.join(BASE_DIR, "organization_admin"))
 
 PATH = {
-    "sangao": {
-        "Question": {
-            "js": os.path.join(BASE_DIR, "sangao", "templates", "Question", "static", "js"),
-            "css": os.path.join(BASE_DIR, "sangao", "templates", "Question", "static", "css"),
+    "organization": {
+        "Works": {
+            "js": os.path.join(BASE_DIR, "organization", "templates", "Works", "static", "js"),
+            "css": os.path.join(BASE_DIR, "organization", "templates", "Works", "static", "css"),
             "images":{
-                "operation": os.path.join(UPLOAD_ROOT, "Question", "operation", "images"),
-                "single_choice": os.path.join(UPLOAD_ROOT, "Question", "single_choice", "images"),
-                "multiple_choice": os.path.join(UPLOAD_ROOT, "Question", "multiple_choice", "images"),
-                "fill_blank": os.path.join(UPLOAD_ROOT, "Question", "fill_blank", "images"),
-                "true_false": os.path.join(UPLOAD_ROOT, "Question", "true_false", "images"),
+                "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "images"),
+                "single_choice": os.path.join(UPLOAD_ROOT, "Works", "single_choice", "images"),
+                "multiple_choice": os.path.join(UPLOAD_ROOT, "Works", "multiple_choice", "images"),
+                "fill_blank": os.path.join(UPLOAD_ROOT, "Works", "fill_blank", "images"),
+                "true_false": os.path.join(UPLOAD_ROOT, "Works", "true_false", "images"),
             },
             "files":{
-                "operation": os.path.join(UPLOAD_ROOT, "Question", "operation", "files"),
+                "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "files"),
             },
             "video":{
-                "operation": os.path.join(UPLOAD_ROOT, "Question", "operation", "video"),
+                "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "video"),
             }            
         },
         "Answer": {
             "js": os.path.join(BASE_DIR, "jobs", "recordings"),
-            "css": os.path.join(BASE_DIR, "sangao", "templates", "Answer", "static", "css"),
+            "css": os.path.join(BASE_DIR, "organization", "templates", "Answer", "static", "css"),
             "images":{
                 "operation": os.path.join(UPLOAD_ROOT, "Answer", "operation", "images"),
-                "single_choice": os.path.join(UPLOAD_ROOT, "Question", "single_choice", "images"),
-                "multiple_choice": os.path.join(UPLOAD_ROOT, "Question", "multiple_choice", "images"),
-                "fill_blank": os.path.join(UPLOAD_ROOT, "Question", "fill_blank", "images"),
-                "true_false": os.path.join(UPLOAD_ROOT, "Question", "true_false", "images"),
+                "single_choice": os.path.join(UPLOAD_ROOT, "Works", "single_choice", "images"),
+                "multiple_choice": os.path.join(UPLOAD_ROOT, "Works", "multiple_choice", "images"),
+                "fill_blank": os.path.join(UPLOAD_ROOT, "Works", "fill_blank", "images"),
+                "true_false": os.path.join(UPLOAD_ROOT, "Works", "true_false", "images"),
             },
             "files": os.path.join(UPLOAD_ROOT, "Answer", "files"),
         }        
     },
     "jobs": {
         "recordings": os.path.join(BASE_DIR, "jobs", "recordings")
-    },    
-    "sangao_admin": {
+    },
+    "sangao": {  # 新增sangao配置，用于题库图片资源
         "Question": {
+            "images": {
+                "single_choice": os.path.join(UPLOAD_ROOT, "Question", "images", "single_choice"),
+                "multiple_choice": os.path.join(UPLOAD_ROOT, "Question", "images", "multiple_choice"),
+                "fill_blank": os.path.join(UPLOAD_ROOT, "Question", "images", "fill_blank")
+            }
+        }
+    },    
+    "organization": {
+        "Works": {
             "files":{
-                "operation": os.path.join(UPLOAD_ROOT, "Question", "operation", "files"),
+                "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "files"),
             },
             "images":{
-                "operation": os.path.join(UPLOAD_ROOT, "Question", "operation", "images"),
-                "single_choice": os.path.join(UPLOAD_ROOT, "Question", "single_choice", "images"),
-                "multiple_choice": os.path.join(UPLOAD_ROOT, "Question", "multiple_choice", "images"),
-                "fill_blank": os.path.join(UPLOAD_ROOT,"Question", "fill_blank", "images")
+                "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "images"),
+                "single_choice": os.path.join(UPLOAD_ROOT, "Works", "single_choice", "images"),
+                "multiple_choice": os.path.join(UPLOAD_ROOT, "Works", "multiple_choice", "images"),
+                "fill_blank": os.path.join(UPLOAD_ROOT,"Works", "fill_blank", "images")
             },
             "video":{
-                "operation": os.path.join(UPLOAD_ROOT, "Question", "operation", "video"),
+                "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "video"),
             }                        
         },
         "TeachExam": {
-            "js": os.path.join(BASE_DIR, "sangao_admin", "templates", "TeachExam", "static", "js"),
+            "js": os.path.join(BASE_DIR, "organization_admin", "templates", "TeachExam", "static", "js"),
             "images": {
-                "board": os.path.join(SANGAO_ADMIN_PATH, "upload", "TeachExam", "images", "board"),
+                "board": os.path.join(organization_ADMIN_PATH, "upload", "TeachExam", "images", "board"),
             }
         },
         
@@ -77,9 +86,9 @@ def get_path(*keys):
         *keys: 路径键序列，对应 PATH 的嵌套层级
         
     示例:
-        get_path("sangao", "templates", "Question", "static", "js")
-        get_path("sangao", "upload", "question", "operation", "files")
-        get_path("sangao_admin", "templates", "Question", "static", "css")
+        get_path("organization", "templates", "Works", "static", "js")
+        get_path("organization", "upload", "Works", "operation", "files")
+        get_path("organization_admin", "templates", "Works", "static", "css")
     """
     if not keys:
         raise ValueError("至少需要一个路径键")
@@ -135,9 +144,9 @@ init_storage_dirs()
 
 # 使用示例
 if __name__ == "__main__":
-    js_path = get_path("sangao", "templates", "Question", "static", "js")
-    op_images = get_path("sangao", "upload", "question", "fill_blank", "images")
-    admin_css = get_path("sangao_admin", "templates", "Question", "static", "css")
+    js_path = get_path("organization", "templates", "Works", "static", "js")
+    op_images = get_path("organization", "upload", "Works", "fill_blank", "images")
+    admin_css = get_path("organization_admin", "templates", "Works", "static", "css")
     print("JS Path:", js_path)
     print("Fill-blank images:", op_images)
     print("Admin CSS:", admin_css)

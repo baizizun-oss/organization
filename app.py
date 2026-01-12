@@ -115,9 +115,9 @@ if __name__ == '__main__':
         , (r'/organization_admin/Competition/edit', organization_admin.CompetitionController.editHandler)           
         #静态资源路由
         # ,(r'/static_jobs_recordings/(.*)', StaticFileHandler, {'path': config.get_path("jobs","recordings")})
-        ,(r'/static_single_choice_question_images/(.*)', StaticFileHandler, {'path': config.get_path("sangao","Question","images","single_choice")})
-        ,(r'/static_multiple_choice_question_images/(.*)', StaticFileHandler, {'path': config.get_path("sangao","Question","images","multiple_choice")})
-        ,(r'/static_fill_blank_question_images/(.*)', StaticFileHandler, {'path': config.get_path("sangao","Question","images","fill_blank")})
+        # ,(r'/static_single_choice_question_images/(.*)', StaticFileHandler, {'path': config.get_path("sangao","Question","images","single_choice")})
+        # ,(r'/static_multiple_choice_question_images/(.*)', StaticFileHandler, {'path': config.get_path("sangao","Question","images","multiple_choice")})
+        # ,(r'/static_fill_blank_question_images/(.*)', StaticFileHandler, {'path': config.get_path("sangao","Question","images","fill_blank")})
 
 
         ],

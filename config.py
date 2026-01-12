@@ -9,64 +9,64 @@ organization_PATH = os.getenv("organization_PATH", os.path.join(BASE_DIR, "organ
 organization_ADMIN_PATH = os.getenv("organization_ADMIN_PATH", os.path.join(BASE_DIR, "organization_admin"))
 
 PATH = {
+    # "organization": {
+    #     "Works": {
+    #         "js": os.path.join(BASE_DIR, "organization", "templates", "Works", "static", "js"),
+    #         "css": os.path.join(BASE_DIR, "organization", "templates", "Works", "static", "css"),
+    #         "images":{
+    #             "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "images"),
+    #             "single_choice": os.path.join(UPLOAD_ROOT, "Works", "single_choice", "images"),
+    #             "multiple_choice": os.path.join(UPLOAD_ROOT, "Works", "multiple_choice", "images"),
+    #             "fill_blank": os.path.join(UPLOAD_ROOT, "Works", "fill_blank", "images"),
+    #             "true_false": os.path.join(UPLOAD_ROOT, "Works", "true_false", "images"),
+    #         },
+    #         "files":{
+    #             "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "files"),
+    #         },
+    #         "video":{
+    #             "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "video"),
+    #         }            
+    #     },
+    #     "Answer": {
+    #         "js": os.path.join(BASE_DIR, "jobs", "recordings"),
+    #         "css": os.path.join(BASE_DIR, "organization", "templates", "Answer", "static", "css"),
+    #         "images":{
+    #             "operation": os.path.join(UPLOAD_ROOT, "Answer", "operation", "images"),
+    #             "single_choice": os.path.join(UPLOAD_ROOT, "Works", "single_choice", "images"),
+    #             "multiple_choice": os.path.join(UPLOAD_ROOT, "Works", "multiple_choice", "images"),
+    #             "fill_blank": os.path.join(UPLOAD_ROOT, "Works", "fill_blank", "images"),
+    #             "true_false": os.path.join(UPLOAD_ROOT, "Works", "true_false", "images"),
+    #         },
+    #         "files": os.path.join(UPLOAD_ROOT, "Answer", "files"),
+    #     }        
+    # },
+    # "jobs": {
+    #     "recordings": os.path.join(BASE_DIR, "jobs", "recordings")
+    # },
+    # "sangao": {  # 新增sangao配置，用于题库图片资源
+    #     "Question": {
+    #         "images": {
+    #             "single_choice": os.path.join(UPLOAD_ROOT, "Question", "images", "single_choice"),
+    #             "multiple_choice": os.path.join(UPLOAD_ROOT, "Question", "images", "multiple_choice"),
+    #             "fill_blank": os.path.join(UPLOAD_ROOT, "Question", "images", "fill_blank")
+    #         }
+    #     }
+    # },    
     "organization": {
-        "Works": {
-            "js": os.path.join(BASE_DIR, "organization", "templates", "Works", "static", "js"),
-            "css": os.path.join(BASE_DIR, "organization", "templates", "Works", "static", "css"),
-            "images":{
-                "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "images"),
-                "single_choice": os.path.join(UPLOAD_ROOT, "Works", "single_choice", "images"),
-                "multiple_choice": os.path.join(UPLOAD_ROOT, "Works", "multiple_choice", "images"),
-                "fill_blank": os.path.join(UPLOAD_ROOT, "Works", "fill_blank", "images"),
-                "true_false": os.path.join(UPLOAD_ROOT, "Works", "true_false", "images"),
-            },
-            "files":{
-                "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "files"),
-            },
-            "video":{
-                "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "video"),
-            }            
-        },
-        "Answer": {
-            "js": os.path.join(BASE_DIR, "jobs", "recordings"),
-            "css": os.path.join(BASE_DIR, "organization", "templates", "Answer", "static", "css"),
-            "images":{
-                "operation": os.path.join(UPLOAD_ROOT, "Answer", "operation", "images"),
-                "single_choice": os.path.join(UPLOAD_ROOT, "Works", "single_choice", "images"),
-                "multiple_choice": os.path.join(UPLOAD_ROOT, "Works", "multiple_choice", "images"),
-                "fill_blank": os.path.join(UPLOAD_ROOT, "Works", "fill_blank", "images"),
-                "true_false": os.path.join(UPLOAD_ROOT, "Works", "true_false", "images"),
-            },
-            "files": os.path.join(UPLOAD_ROOT, "Answer", "files"),
-        }        
-    },
-    "jobs": {
-        "recordings": os.path.join(BASE_DIR, "jobs", "recordings")
-    },
-    "sangao": {  # 新增sangao配置，用于题库图片资源
-        "Question": {
-            "images": {
-                "single_choice": os.path.join(UPLOAD_ROOT, "Question", "images", "single_choice"),
-                "multiple_choice": os.path.join(UPLOAD_ROOT, "Question", "images", "multiple_choice"),
-                "fill_blank": os.path.join(UPLOAD_ROOT, "Question", "images", "fill_blank")
-            }
-        }
-    },    
-    "organization": {
-        "Works": {
-            "files":{
-                "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "files"),
-            },
-            "images":{
-                "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "images"),
-                "single_choice": os.path.join(UPLOAD_ROOT, "Works", "single_choice", "images"),
-                "multiple_choice": os.path.join(UPLOAD_ROOT, "Works", "multiple_choice", "images"),
-                "fill_blank": os.path.join(UPLOAD_ROOT,"Works", "fill_blank", "images")
-            },
-            "video":{
-                "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "video"),
-            }                        
-        },
+        # "Works": {
+        #     "files":{
+        #         "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "files"),
+        #     },
+        #     "images":{
+        #         "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "images"),
+        #         "single_choice": os.path.join(UPLOAD_ROOT, "Works", "single_choice", "images"),
+        #         "multiple_choice": os.path.join(UPLOAD_ROOT, "Works", "multiple_choice", "images"),
+        #         "fill_blank": os.path.join(UPLOAD_ROOT,"Works", "fill_blank", "images")
+        #     },
+        #     "video":{
+        #         "operation": os.path.join(UPLOAD_ROOT, "Works", "operation", "video"),
+        #     }                        
+        # },
         "TeachExam": {
             "js": os.path.join(BASE_DIR, "organization_admin", "templates", "TeachExam", "static", "js"),
             "images": {
